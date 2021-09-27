@@ -1,0 +1,21 @@
+.featured {
+  width: 100%;
+  text-align: center;
+
+  h2 {
+    margin-top: 2rem;
+  }
+
+  .ft-container {
+    display: flex;
+    justify-content: center;
+
+    .album-icon {
+      width: 10rem;
+      margin: 2rem;
+      img {
+        width: 100%;
+      }
+    }
+  }
+}
