@@ -18,22 +18,25 @@
     }
   }
 
-  button {
-    background-color: white;
-    padding: 0.6rem 0.9rem;
-    font-weight: bold;
-    font-size: 1rem;
-    border-radius: 3px;
-    border: none;
-    cursor: pointer;
-    z-index: 4;
+  a {
+    z-index: 5;
 
-    &:hover {
-      background-color: #fa4d22;
-    }
+    button {
+      background-color: white;
+      padding: 0.6rem 0.9rem;
+      font-weight: bold;
+      font-size: 1rem;
+      border-radius: 3px;
+      border: none;
+      cursor: pointer;
 
-    &:active {
-      background-color: rgb(62, 89, 110);
+      &:hover {
+        background-color: #fa4d22;
+      }
+
+      &:active {
+        background-color: rgb(62, 89, 110);
+      }
     }
   }
 

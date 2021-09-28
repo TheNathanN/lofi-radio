@@ -4,6 +4,8 @@ import Link from 'next/link';
 import styles from './hero.module.scss';
 
 import Person from './svgs/person';
+import TreeOne from './svgs/tree-one';
+import TreeTwo from './svgs/tree-two';
 
 const Hero = () => {
   return (
@@ -15,9 +17,13 @@ const Hero = () => {
       </h1>
 
       <Link href='/player'>
-        <button>OPEN PLAYER</button>
+        <a>
+          <button>OPEN PLAYER</button>
+        </a>
       </Link>
 
+      <TreeOne />
+      <TreeTwo />
       <Person />
       <div className={styles.grass}></div>
     </header>

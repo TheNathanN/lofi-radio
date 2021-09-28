@@ -9,7 +9,7 @@ const Albums = () => {
       <h2>Albums</h2>
       <div className={styles['ft-container']}>
         {albums.map(album => (
-          <div className={styles['album-icon']}>
+          <div className={styles['album-icon']} key={album.name}>
             <Image
               src={`${album.img}`}
               alt={`${album.name}`}
