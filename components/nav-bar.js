@@ -10,18 +10,6 @@ const NavBar = () => {
           <a>Lofi Radio</a>
         </Link>
       </div>
-      <ul>
-        <li>
-          <Link href='/albums'>
-            <a>Albums</a>
-          </Link>
-        </li>
-        <li>
-          <Link href='/player'>
-            <a>Player</a>
-          </Link>
-        </li>
-      </ul>
     </nav>
   );
 };
