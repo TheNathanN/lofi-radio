@@ -11,7 +11,8 @@
   h1 {
     font-size: 2rem;
     text-align: center;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
+    color: #080f0f;
 
     span {
       display: block;
@@ -22,7 +23,8 @@
     z-index: 5;
 
     button {
-      background-color: white;
+      background-color: #080f0f;
+      color: white;
       padding: 0.6rem 0.9rem;
       font-weight: bold;
       font-size: 1rem;
@@ -31,7 +33,8 @@
       cursor: pointer;
 
       &:hover {
-        background-color: #fa4d22;
+        background-color: white;
+        color: #080f0f;
       }
 
       &:active {

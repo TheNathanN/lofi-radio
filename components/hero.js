@@ -4,8 +4,14 @@ import Link from 'next/link';
 import styles from './hero.module.scss';
 
 import Person from './svgs/person';
+import GrassOne from './svgs/grass-one';
+import GrassTwo from './svgs/grass-two';
+import GrassThree from './svgs/grass-three';
+import GrassFour from './svgs/grass-four';
 import TreeOne from './svgs/tree-one';
 import TreeTwo from './svgs/tree-two';
+import BirdsOne from './svgs/birds-one';
+import BirdsTwo from './svgs/birds-two';
 
 const Hero = () => {
   return (
@@ -22,9 +28,15 @@ const Hero = () => {
         </a>
       </Link>
 
+      <Person />
+      <GrassOne />
+      <GrassTwo />
+      <GrassThree />
+      <GrassFour />
       <TreeOne />
       <TreeTwo />
-      <Person />
+      <BirdsOne />
+      <BirdsTwo />
       <div className={styles.grass}></div>
     </header>
   );
