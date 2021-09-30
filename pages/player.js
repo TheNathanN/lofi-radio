@@ -1,6 +1,9 @@
 import React from 'react';
 import Head from 'next/head';
 
+import PlayerTransition from '../components/player-transition';
+import PlayerContainer from '../components/player-container';
+
 const PlayerPage = () => {
   return (
     <>
@@ -11,6 +14,8 @@ const PlayerPage = () => {
           content='A playlist of lofi music for relaxing.'
         />
       </Head>
+      {/* <PlayerTransition /> */}
+      <PlayerContainer />
     </>
   );
 };
