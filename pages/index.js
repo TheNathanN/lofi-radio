@@ -1,7 +1,7 @@
 import Head from 'next/head';
 
-import Hero from '../components/hero';
-import Albums from '../components/albums';
+import Hero from '../components/home-page/hero';
+import Albums from '../components/home-page/albums';
 
 const HomePage = () => {
   return (

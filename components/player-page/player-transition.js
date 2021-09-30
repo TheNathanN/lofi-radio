@@ -2,7 +2,7 @@ import React from 'react';
 
 import styles from './player-transition.module.scss';
 
-import PhoneContainer from './phone-container';
+import PhoneContainer from '../svgs/phone-svg/phone-container';
 
 const PlayerTransition = () => {
   return (

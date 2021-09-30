@@ -2,7 +2,7 @@ import React from 'react';
 
 import styles from './phone-container.module.scss';
 
-import Phone from './phone-svg/phone-svg';
+import Phone from './phone-svg';
 
 const PhoneContainer = () => {
   return (

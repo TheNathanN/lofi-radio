@@ -1,8 +1,8 @@
 import React from 'react';
 import Head from 'next/head';
 
-import PlayerTransition from '../components/player-transition';
-import PlayerContainer from '../components/player-container';
+import PlayerTransition from '../components/player-page/player-transition';
+import PlayerContainer from '../components/player-page/player-container';
 
 const PlayerPage = () => {
   return (

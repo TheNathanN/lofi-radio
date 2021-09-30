@@ -19,3 +19,26 @@
     }
   }
 }
+
+.player-nav {
+  display: flex;
+  height: 4rem;
+  position: fixed;
+  top: 0;
+  background-color: transparent;
+  color: white;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  z-index: 20;
+
+  .logo {
+    font-size: 1.2rem;
+    font-weight: bold;
+
+    &:hover {
+      color: #080f0f;
+      outline: white;
+    }
+  }
+}
