@@ -7,17 +7,11 @@ import PlayerAlbums from './player-albums';
 import PlayerPlaylist from './player-playlist';
 
 const PlayerContainer = () => {
-  const {
-    setOnPlayer,
-    setSelectedAlbum,
-    selectedAlbum,
-    selectedArtist,
-    setSearchedAlbum,
-  } = useContext(AppContext);
+  const { setOnPlayer, setSelectedAlbum, selectedAlbum, selectedArtist } =
+    useContext(AppContext);
 
   useEffect(() => {
     setOnPlayer(true);
-    setSearchedAlbum('');
 
     if (selectedArtist && !selectedAlbum) {
       const selected = getAlbumInfo(selectedAlbum);

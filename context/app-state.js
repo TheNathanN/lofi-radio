@@ -6,7 +6,6 @@ const AppState = props => {
   const [selectedAlbum, setSelectedAlbum] = useState('');
   const [selectedSong, setSelectedSong] = useState('');
   const [selectedArtist, setSelectedArtist] = useState('');
-  const [searchedAlbum, setSearchedAlbum] = useState('');
 
   return (
     <AppContext.Provider
@@ -19,8 +18,6 @@ const AppState = props => {
         setSelectedSong,
         selectedArtist,
         setSelectedArtist,
-        searchedAlbum,
-        setSearchedAlbum,
       }}
     >
       {props.children}

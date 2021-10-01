@@ -7,8 +7,7 @@ import { albums } from '../../data/music';
 import AppContext from '../../context/app-context';
 
 const PlayerAlbums = () => {
-  const { setSearchedAlbum, selectedAlbum, setSelectedAlbum } =
-    useContext(AppContext);
+  const { selectedAlbum, setSelectedAlbum } = useContext(AppContext);
 
   return (
     <div className={styles.featured}>
@@ -24,8 +23,7 @@ const PlayerAlbums = () => {
                 (e.target.outerText && e.target.outerText === album.name) ||
                 (e.target.outerText && e.target.outerText === album.artist)
               ) {
-                selectedAlbum && setSearchedAlbum(album.name);
-                !selectedAlbum && setSelectedAlbum(album.name);
+                setSelectedAlbum(album.name);
               }
             }}
           >

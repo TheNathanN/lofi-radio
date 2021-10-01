@@ -6,13 +6,11 @@ import { getAlbumInfo } from '../../data/music';
 import styles from './player-playlist.module.scss';
 
 const PlayerPlaylist = () => {
-  const { setSelectedSong, selectedAlbum, selectedSong, searchedAlbum } =
+  const { setSelectedSong, selectedAlbum, selectedSong } =
     useContext(AppContext);
 
   const albumArray = getAlbumInfo(selectedAlbum);
-  const searchedAlbumArray = getAlbumInfo(searchedAlbum);
   const _albumInfo = albumArray[0];
-  const _searchedAlbumInfo = searchedAlbumArray[0];
 
   return (
     <>
@@ -20,44 +18,24 @@ const PlayerPlaylist = () => {
       {_albumInfo && (
         <div className={styles.playlist}>
           <Image
-            src={_searchedAlbumInfo ? _searchedAlbumInfo.img : _albumInfo.img}
-            alt={_searchedAlbumInfo ? _searchedAlbumInfo.name : _albumInfo.name}
+            src={_albumInfo.img}
+            alt={_albumInfo.name}
             width={500}
             height={500}
           />
-          <div>
-            <h2>
-              {_searchedAlbumInfo ? _searchedAlbumInfo.name : _albumInfo.name}
-            </h2>
-            <p>
-              {_searchedAlbumInfo
-                ? _searchedAlbumInfo.artist
-                : _albumInfo.artist}
-            </p>
+          <div className={styles['album-info']}>
+            <h2>{_albumInfo.name}</h2>
+            <p>{_albumInfo.artist}</p>
           </div>
           <div className={styles['song-list']}>
-            {/* If there isn't a searched album the playlist will show the selected album */}
-            {!_searchedAlbumInfo &&
-              _albumInfo.songs.map(song => (
-                <>
-                  <div className={styles['song-details']}>
-                    {`${_albumInfo.songs.indexOf(song) + 1}. ${song.name}`}
-                  </div>
-                  <p className={styles['song-credits']}>{song.credits}</p>
-                </>
-              ))}
-            {/* If there is a searched album the playlist will show the searched album */}
-            {_searchedAlbumInfo &&
-              _searchedAlbumInfo.songs.map(song => (
-                <>
-                  <div className={styles['song-details']}>
-                    {`${_searchedAlbumInfo.songs.indexOf(song) + 1}. ${
-                      song.name
-                    }`}
-                  </div>
-                  <p className={styles['song-credits']}>{song.credits}</p>
-                </>
-              ))}
+            {_albumInfo.songs.map(song => (
+              <div className={styles['song-details']} key={song.id}>
+                <p className={styles['song-name']}>
+                  {`${_albumInfo.songs.indexOf(song) + 1}. ${song.name}`}
+                </p>
+                <p className={styles['song-credits']}>{song.credits}</p>
+              </div>
+            ))}
           </div>
         </div>
       )}
