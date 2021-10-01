@@ -18,7 +18,7 @@ const PlayerContainer = () => {
       setSelectedAlbum(selected[0].name);
       return;
     }
-  }, []);
+  }, [selectedAlbum, selectedArtist, setOnPlayer, setSelectedAlbum]);
 
   return (
     <section className={styles['player-container']}>

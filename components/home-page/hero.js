@@ -19,7 +19,7 @@ const Hero = () => {
 
   useEffect(() => {
     setOnPlayer(false);
-  }, []);
+  }, [setOnPlayer]);
 
   return (
     <header className={styles.header}>
