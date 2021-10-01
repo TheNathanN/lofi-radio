@@ -18,6 +18,29 @@
   }
 }
 
+.selected-song {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #62a87c;
+  border-radius: 20px;
+  height: 7rem;
+  margin: 1rem auto;
+  cursor: pointer;
+  transition: ease-out 0.2s;
+  width: 84%;
+  color: #62a87c;
+
+  .song-name {
+    font-size: 1.05rem;
+    margin-bottom: 1rem;
+  }
+  .song-credits {
+    font-size: 0.95rem;
+  }
+}
+
 .song-details {
   display: flex;
   flex-direction: column;
@@ -29,11 +52,10 @@
   width: 90%;
   margin: 1rem auto;
   cursor: pointer;
+  transition: ease-out 0.2s;
 
   &:hover {
-    width: 86%;
-    font-weight: bold;
-    border: 3px solid white;
+    width: 84%;
 
     .song-name {
       font-size: 1.05rem;
@@ -46,6 +68,11 @@
   .song-name {
     margin-bottom: 1rem;
     font-size: 1.1rem;
+    transition: ease-out 0.2s;
+  }
+
+  .song-credits {
+    transition: ease-out 0.2s;
   }
 }
 

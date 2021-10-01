@@ -24,20 +24,10 @@ const Albums = () => {
             onClick={e => {
               if (
                 e.target.alt ||
-                (e.target.outerText && e.target.outerText === album.name)
+                (e.target.outerText && e.target.outerText === album.name) ||
+                (e.target.outerText && e.target.outerText === album.artist)
               ) {
-                if (selectedArtist) {
-                  setSelectedArtist('');
-                }
                 setSelectedAlbum(album.name);
-                router.push('/player');
-              }
-
-              if (e.target.outerText && e.target.outerText === album.artist) {
-                if (selectedAlbum) {
-                  setSelectedAlbum('');
-                }
-                setSelectedArtist(e.target.outerText);
                 router.push('/player');
               }
             }}

@@ -31,14 +31,14 @@
       border-radius: 3px;
       border: none;
       cursor: pointer;
+      width: 10rem;
+      transition: ease-out 0.2s;
 
       &:hover {
+        font-size: 0.97rem;
+        width: 9.5rem;
         background-color: white;
         color: #080f0f;
-      }
-
-      &:active {
-        font-size: 0.95rem;
       }
     }
   }

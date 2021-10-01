@@ -756,3 +756,12 @@ export const albums = [
 export const getAlbumInfo = albumName => {
   return albums.filter(album => album.name === albumName);
 };
+
+export const getAlbumFromSong = songName => {
+  return albums.filter(album => {
+    const albumSongs = album.songs;
+    for (let song of albumSongs) {
+      song.name === songName;
+    }
+  });
+};

@@ -14,12 +14,12 @@
     justify-content: center;
     cursor: pointer;
     flex-wrap: wrap;
-    margin: 0 0rem;
 
     .album-icon {
       width: 15rem;
       height: 25rem;
       margin: 2rem 2rem 0;
+      transition: ease-out 0.2s;
 
       img {
         width: 13rem;

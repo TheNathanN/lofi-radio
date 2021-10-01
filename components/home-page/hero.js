@@ -15,11 +15,12 @@ import BirdsOne from '../svgs/birds-one';
 import BirdsTwo from '../svgs/birds-two';
 
 const Hero = () => {
-  const { setOnPlayer } = useContext(AppContext);
+  const { setOnPlayer, setSearchedAlbum } = useContext(AppContext);
 
   useEffect(() => {
     setOnPlayer(false);
-  }, [setOnPlayer]);
+    setSearchedAlbum('');
+  }, [setOnPlayer, setSearchedAlbum]);
 
   return (
     <header className={styles.header}>

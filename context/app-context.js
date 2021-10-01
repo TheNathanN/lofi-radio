@@ -7,8 +7,10 @@ const selectedAlbum = '';
 const setSelectedAlbum = () => {};
 const selectedSong = '';
 const setSelectedSong = () => {};
-const selectedArtist = '';
-const setSelectedArtist = () => {};
+const playlist = [];
+const setPlaylist = () => {};
+const searchedAlbum = '';
+const setSearchedAlbum = () => {};
 
 // Context
 const AppContext = createContext({
@@ -18,8 +20,10 @@ const AppContext = createContext({
   setSelectedAlbum,
   selectedSong,
   setSelectedSong,
-  selectedArtist,
-  setSelectedArtist,
+  playlist,
+  setPlaylist,
+  searchedAlbum,
+  setSearchedAlbum,
 });
 
 export default AppContext;

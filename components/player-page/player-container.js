@@ -1,31 +1,27 @@
 import React, { useContext, useEffect } from 'react';
 import styles from './player-container.module.scss';
-import { getAlbumInfo } from '../../data/music';
 import AppContext from '../../context/app-context';
 
 import PlayerAlbums from './player-albums';
 import PlayerPlaylist from './player-playlist';
+import PlayerController from './player-controller';
 
 const PlayerContainer = () => {
-  const { setOnPlayer, setSelectedAlbum, selectedAlbum, selectedArtist } =
-    useContext(AppContext);
+  const { setOnPlayer, setSearchedAlbum } = useContext(AppContext);
 
   useEffect(() => {
     setOnPlayer(true);
-
-    if (selectedArtist && !selectedAlbum) {
-      const selected = getAlbumInfo(selectedAlbum);
-      setSelectedAlbum(selected[0].name);
-      return;
-    }
-  }, [selectedAlbum, selectedArtist, setOnPlayer, setSelectedAlbum]);
+    setSearchedAlbum('');
+  }, [setOnPlayer, setSearchedAlbum]);
 
   return (
     <section className={styles['player-container']}>
       <section className={styles['albums-container']}>
         <PlayerAlbums />
       </section>
-      <section className={styles['player']}>player</section>
+      <section className={styles['player']}>
+        <PlayerController />
+      </section>
       <section className={styles['songs-container']}>
         <PlayerPlaylist />
       </section>
