@@ -23,9 +23,10 @@
 .player-nav {
   display: flex;
   height: 4rem;
+  width: 100%;
   position: fixed;
   top: 0;
-  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0.637);
   color: white;
   justify-content: space-between;
   align-items: center;
