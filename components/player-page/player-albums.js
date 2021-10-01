@@ -7,7 +7,7 @@ import { albums } from '../../data/music';
 import AppContext from '../../context/app-context';
 
 const PlayerAlbums = () => {
-  const { selectedAlbum, setSelectedAlbum } = useContext(AppContext);
+  const { setSelectedAlbum } = useContext(AppContext);
 
   return (
     <div className={styles.featured}>

@@ -6,8 +6,7 @@ import { getAlbumInfo } from '../../data/music';
 import styles from './player-playlist.module.scss';
 
 const PlayerPlaylist = () => {
-  const { setSelectedSong, selectedAlbum, selectedSong } =
-    useContext(AppContext);
+  const { setSelectedSong, selectedAlbum } = useContext(AppContext);
 
   const albumArray = getAlbumInfo(selectedAlbum);
   const _albumInfo = albumArray[0];
@@ -29,7 +28,11 @@ const PlayerPlaylist = () => {
           </div>
           <div className={styles['song-list']}>
             {_albumInfo.songs.map(song => (
-              <div className={styles['song-details']} key={song.id}>
+              <div
+                className={styles['song-details']}
+                key={song.id}
+                onClick={() => setSelectedSong(song.name)}
+              >
                 <p className={styles['song-name']}>
                   {`${_albumInfo.songs.indexOf(song) + 1}. ${song.name}`}
                 </p>

@@ -16,7 +16,7 @@ const Footer = () => {
           </Link>
         </div>
         <p>
-          Coded by{' '}
+          Designed & Coded by{' '}
           <Link href='/'>
             <a target='blank'>Nathan Nicholson</a>
           </Link>

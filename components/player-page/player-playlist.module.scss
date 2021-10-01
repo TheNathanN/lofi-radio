@@ -31,9 +31,10 @@
   cursor: pointer;
 
   &:hover {
-    width: 88%;
+    width: 86%;
     font-weight: bold;
     border: 3px solid white;
+
     .song-name {
       font-size: 1.05rem;
     }
