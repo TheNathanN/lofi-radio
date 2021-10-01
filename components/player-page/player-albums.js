@@ -7,10 +7,11 @@ import { albums } from '../../data/music';
 import AppContext from '../../context/app-context';
 
 const PlayerAlbums = () => {
-  const { setSearchedAlbum } = useContext(AppContext);
+  const { setSearchedAlbum, selectedAlbum, setSelectedAlbum } =
+    useContext(AppContext);
 
   return (
-    <section className={styles.featured}>
+    <div className={styles.featured}>
       <h2>Albums</h2>
       <div className={styles['ft-container']}>
         {albums.map(album => (
@@ -23,16 +24,9 @@ const PlayerAlbums = () => {
                 (e.target.outerText && e.target.outerText === album.name) ||
                 (e.target.outerText && e.target.outerText === album.artist)
               ) {
-                setSearchedAlbum(album.name);
+                selectedAlbum && setSearchedAlbum(album.name);
+                !selectedAlbum && setSelectedAlbum(album.name);
               }
-
-              // if (e.target.outerText && e.target.outerText === album.name) {
-              //   setSearchedAlbum(album.name);
-              // }
-
-              // if (e.target.outerText && e.target.outerText === album.artist) {
-              //   setSearchedAlbum(album.name);
-              // }
             }}
           >
             <Image src={album.img} alt={album.name} width={500} height={500} />
@@ -42,7 +36,7 @@ const PlayerAlbums = () => {
           </div>
         ))}
       </div>
-    </section>
+    </div>
   );
 };
 
