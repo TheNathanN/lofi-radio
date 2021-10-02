@@ -3,22 +3,22 @@
   height: 55rem;
   display: flex;
   justify-content: center;
+}
 
-  .albums-container {
-    height: 100%;
-    width: 25%;
-    background-color: black;
-    overflow: scroll;
-  }
+.albums-container {
+  height: 100%;
+  width: 25%;
+  background-color: black;
+  overflow: scroll;
+}
 
-  .player {
-    height: 100%;
-    width: 50%;
-  }
+.player {
+  height: 100%;
+  width: 50%;
+}
 
-  .songs-container {
-    height: 100%;
-    width: 25%;
-    background-color: black;
-  }
+.songs-container {
+  height: 100%;
+  width: 25%;
+  background-color: black;
 }

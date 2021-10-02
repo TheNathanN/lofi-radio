@@ -765,3 +765,5 @@ export const getAlbumFromSong = songName => {
     }
   });
 };
+
+getAlbumFromSong();

@@ -12,7 +12,6 @@ const PlayerPlaylist = () => {
     setSelectedAlbum,
     selectedAlbum,
     setPlaylist,
-    setSearchedAlbum,
     searchedAlbum,
   } = useContext(AppContext);
 

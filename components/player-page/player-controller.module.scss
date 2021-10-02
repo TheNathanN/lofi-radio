@@ -1,5 +1,135 @@
-.controller {
+.controller-container {
+  background: linear-gradient(10deg, rgb(56, 56, 56) 10%, rgb(22, 22, 41) 70%);
+  height: 100%;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.album-photo {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+
+  img {
+    width: 20rem;
+  }
+}
+
+.song-credits {
+  text-align: center;
+  margin: 1.5rem 0;
+
+  .song-name {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .artists-name {
+    font-size: 1.1rem;
+    font-weight: bold;
+  }
+}
+
+.player {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 40%;
+}
+
+.progress-bar {
+  display: flex;
+  justify-content: space-between;
+
+  .time {
+    margin-right: 1rem;
+  }
+
+  .duration {
+    margin-left: 1rem;
+  }
+
+  input {
+    --bar-bg: white;
+    --seek-before-width: 100px;
+    --seek-before-color: #669bbe;
+    --knobby: black;
+    --selectedKnobby: gray;
+
+    width: 100%;
+    appearance: none;
+    background: var(--bar-bg);
+    border-radius: 10px;
+    position: relative;
+    height: 11px;
+    outline: none;
+
+    &::-webkit-slider-runnable-track {
+      width: 100%;
+      appearance: none;
+      background: var(--bar-bg);
+      border-radius: 10px;
+      position: relative;
+      height: 11px;
+      outline: none;
+      cursor: pointer;
+    }
+
+    &::--moz-range-track {
+      width: 100%;
+      appearance: none;
+      background: var(--bar-bg);
+      border-radius: 10px;
+      position: relative;
+      height: 11px;
+      outline: none;
+      cursor: pointer;
+    }
+
+    &::-moz-focus-outer {
+      border: 0;
+    }
+
+    &::before {
+      content: '';
+      height: 11px;
+      width: var(--seek-before-width);
+      background-color: var(--seek-before-color);
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 2;
+      cursor: pointer;
+    }
+
+    &::-moz-range-progress {
+      width: var(--seek-before-width);
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+      height: 11px;
+    }
+
+    &::-webkit-slider-thumb {
+      -webkit-appearance: none;
+    }
+  }
+}
+
+.control-btns {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem;
+
+  button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
 }

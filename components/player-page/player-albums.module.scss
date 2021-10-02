@@ -8,40 +8,40 @@
     margin: 4rem 0 2rem;
     font-size: 2rem;
   }
+}
 
-  .ft-container {
-    display: flex;
-    justify-content: center;
-    cursor: pointer;
-    flex-wrap: wrap;
+.ft-container {
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  flex-wrap: wrap;
 
-    .album-icon {
-      width: 15rem;
-      height: 25rem;
-      margin: 2rem 2rem 0;
-      transition: ease-out 0.2s;
+  .album-icon {
+    width: 15rem;
+    height: 25rem;
+    margin: 2rem 2rem 0;
+    transition: ease-out 0.2s;
 
-      img {
-        width: 13rem;
-      }
-
-      &:hover {
-        padding: 1rem;
-        border: 1px solid white;
-      }
+    img {
+      width: 13rem;
     }
 
-    .album-name {
-      font-size: 1.3rem;
-      margin: 1.5rem 0;
-      width: 100%;
+    &:hover {
+      padding: 1rem;
+      border: 1px solid white;
     }
+  }
 
-    .artist {
-      font-weight: bold;
-      font-size: 1.1rem;
-      border-top: 1px solid white;
-      padding-top: 1rem;
-    }
+  .album-name {
+    font-size: 1.3rem;
+    margin: 1.5rem 0;
+    width: 100%;
+  }
+
+  .artist {
+    font-weight: bold;
+    font-size: 1.1rem;
+    border-top: 1px solid white;
+    padding-top: 1rem;
   }
 }
