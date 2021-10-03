@@ -15,7 +15,7 @@ const PlayerContainer = () => {
   }, [setOnPlayer, setSearchedAlbum]);
 
   return (
-    <section className={styles['player-container']}>
+    <main className={styles['player-container']}>
       <section className={styles['albums-container']}>
         <PlayerAlbums />
       </section>
@@ -25,7 +25,7 @@ const PlayerContainer = () => {
       <section className={styles['songs-container']}>
         <PlayerPlaylist />
       </section>
-    </section>
+    </main>
   );
 };
 

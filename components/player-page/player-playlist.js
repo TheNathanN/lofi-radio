@@ -22,6 +22,37 @@ const PlayerPlaylist = () => {
   const _albumInfo = albumArray[0];
   const _searchedAlbumInfo = searchedAlbumArray[0];
 
+  const songSelectHandler = song => {
+    const createdPlaylist = [];
+    let albumSongs;
+
+    if (!searchedAlbum) {
+      albumSongs = _albumInfo.songs;
+    } else {
+      albumSongs = _searchedAlbumInfo.songs;
+    }
+    const songIndex = albumSongs.indexOf(song);
+
+    if (!searchedAlbum) {
+      for (let i = songIndex; i < _albumInfo.songs.length; i++) {
+        createdPlaylist.push(_albumInfo.songs[i]);
+      }
+    } else {
+      for (let i = songIndex; i < _searchedAlbumInfo.songs.length; i++) {
+        createdPlaylist.push(_searchedAlbumInfo.songs[i]);
+      }
+    }
+
+    if (_searchedAlbumInfo) {
+      setSelectedAlbum(_searchedAlbumInfo.name);
+    }
+    setSelectedSong(song.name);
+    setPlaylist(createdPlaylist);
+    if (audioRef.current) {
+      audioRef.current.load();
+    }
+  };
+
   return (
     <>
       {/* --------- This shows if there is only an album selected and no search --------- */}
@@ -46,20 +77,7 @@ const PlayerPlaylist = () => {
                     : styles['song-details']
                 }
                 key={song.id}
-                onClick={() => {
-                  const createdPlaylist = [];
-                  const albumSongs = _albumInfo.songs;
-                  const songIndex = albumSongs.indexOf(song);
-
-                  for (let i = songIndex; i < _albumInfo.songs.length; i++) {
-                    createdPlaylist.push(_albumInfo.songs[i]);
-                  }
-                  setSelectedSong(song.name);
-                  setPlaylist(createdPlaylist);
-                  if (audioRef.current) {
-                    audioRef.current.load();
-                  }
-                }}
+                onClick={() => songSelectHandler(song)}
               >
                 <p className={styles['song-name']}>
                   {`${_albumInfo.songs.indexOf(song) + 1}. ${song.name}`}
@@ -92,23 +110,7 @@ const PlayerPlaylist = () => {
                     : styles['song-details']
                 }
                 key={song.id}
-                onClick={() => {
-                  const createdPlaylist = [];
-                  const albumSongs = _searchedAlbumInfo.songs;
-                  const songIndex = albumSongs.indexOf(song);
-
-                  for (
-                    let i = songIndex;
-                    i < _searchedAlbumInfo.songs.length;
-                    i++
-                  ) {
-                    createdPlaylist.push(_searchedAlbumInfo.songs[i]);
-                  }
-                  setSelectedAlbum(_searchedAlbumInfo.name);
-                  setSelectedSong(song.name);
-                  setPlaylist(createdPlaylist);
-                  audioRef.current.load();
-                }}
+                onClick={() => songSelectHandler(song)}
               >
                 <p className={styles['song-name']}>
                   {`${_searchedAlbumInfo.songs.indexOf(song) + 1}. ${

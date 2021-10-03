@@ -5,7 +5,7 @@ const AppState = props => {
   const [onPlayer, setOnPlayer] = useState(false);
   const [selectedAlbum, setSelectedAlbum] = useState('');
   const [selectedSong, setSelectedSong] = useState('');
-  const [playlist, setPlaylist] = useState([]);
+  const [playlist, setPlaylist] = useState();
   const [searchedAlbum, setSearchedAlbum] = useState('');
   const audioRef = useRef();
 

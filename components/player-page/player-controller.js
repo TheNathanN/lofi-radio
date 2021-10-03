@@ -6,14 +6,16 @@ import { getAlbumInfo } from '../../data/music';
 
 const PlayerController = () => {
   const [isPlaying, setIsPlaying] = useState(false);
-  const { audioRef, selectedAlbum, selectedSong, playlist, setPlaylist } =
-    useContext(AppContext);
+  const {
+    audioRef,
+    selectedAlbum,
+    setSelectedSong,
+    selectedSong,
+    playlist,
+    setPlaylist,
+  } = useContext(AppContext);
   const albumArray = getAlbumInfo(selectedAlbum);
   const _albumInfo = albumArray[0];
-
-  const playPauseHandler = () => {
-    setIsPlaying(!isPlaying);
-  };
 
   useEffect(() => {
     if (isPlaying) {
@@ -25,6 +27,39 @@ const PlayerController = () => {
     }
   }, [isPlaying, audioRef, selectedSong]);
 
+  const nextSongHandler = () => {
+    const currentPlaylist = [...playlist];
+    currentPlaylist.shift();
+    if (currentPlaylist.length >= 1) {
+      setPlaylist(currentPlaylist);
+      setSelectedSong(currentPlaylist[0].name);
+      audioRef.current.load();
+    } else {
+      setIsPlaying(false);
+    }
+  };
+
+  const prevSongHandler = () => {
+    const currentPlaylist = [...playlist];
+    const albumSongs = _albumInfo.songs;
+    const currentSong = playlist[0];
+    const currentSongIndex = albumSongs.indexOf(currentSong);
+    const prevSongArr = albumSongs.filter(song => {
+      return albumSongs.indexOf(song) === currentSongIndex - 1;
+    });
+    const [prevSong] = prevSongArr;
+
+    currentPlaylist.unshift(prevSong);
+
+    if (prevSong) {
+      setPlaylist(currentPlaylist);
+      setSelectedSong(currentPlaylist[0].name);
+      audioRef.current.load();
+    } else {
+      setIsPlaying(false);
+    }
+  };
+
   return (
     <div className={styles['controller-container']}>
       {selectedSong && (
@@ -35,37 +70,38 @@ const PlayerController = () => {
             width={500}
             height={500}
           />
+
           <div className={styles['song-credits']}>
             <p className={styles['song-name']}> {selectedSong} </p>
             <p className={styles['artists-name']}> {playlist[0].credits} </p>
           </div>
+
           <div className={styles.player}>
-            <audio ref={audioRef}>
+            <audio ref={audioRef} onEnded={nextSongHandler}>
               <source src={playlist[0].audio} />
             </audio>
+
             <div className={styles['progress-bar']}>
               {/* current time */}
               <div className={styles.time}>0:00</div>
               {/* progress bar */}
-
               <input type='range' />
-
               {/* duration */}
               <div className={styles.duration}>2:50</div>
             </div>
 
             <div className={styles['control-btns']}>
-              <button>
+              <button onClick={prevSongHandler}>
                 <i className='fas fa-step-backward'></i>
               </button>
-              <button onClick={playPauseHandler}>
+              <button onClick={() => setIsPlaying(!isPlaying)}>
                 {!isPlaying ? (
                   <i className='fas fa-play'></i>
                 ) : (
                   <i className='fas fa-pause'></i>
                 )}
               </button>
-              <button>
+              <button onClick={nextSongHandler}>
                 <i className='fas fa-step-forward'></i>
               </button>
             </div>
