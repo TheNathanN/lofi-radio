@@ -5,7 +5,6 @@ import AppContext from '../../context/app-context';
 import { getAlbumInfo } from '../../data/music';
 
 const PlayerController = () => {
-  const [isPlaying, setIsPlaying] = useState(false);
   const {
     audioRef,
     selectedAlbum,
@@ -14,8 +13,10 @@ const PlayerController = () => {
     playlist,
     setPlaylist,
   } = useContext(AppContext);
+  const [isPlaying, setIsPlaying] = useState(false);
   const albumArray = getAlbumInfo(selectedAlbum);
   const _albumInfo = albumArray[0];
+  // const { duration, currentTime } = audioRef.current;
 
   useEffect(() => {
     if (isPlaying) {
