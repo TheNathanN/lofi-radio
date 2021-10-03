@@ -12,7 +12,9 @@ const PlayerPlaylist = () => {
     setSelectedAlbum,
     selectedAlbum,
     setPlaylist,
+    playlist,
     searchedAlbum,
+    audioRef,
   } = useContext(AppContext);
 
   const albumArray = getAlbumInfo(selectedAlbum);
@@ -54,6 +56,9 @@ const PlayerPlaylist = () => {
                   }
                   setSelectedSong(song.name);
                   setPlaylist(createdPlaylist);
+                  if (audioRef.current) {
+                    audioRef.current.load();
+                  }
                 }}
               >
                 <p className={styles['song-name']}>
@@ -102,6 +107,7 @@ const PlayerPlaylist = () => {
                   setSelectedAlbum(_searchedAlbumInfo.name);
                   setSelectedSong(song.name);
                   setPlaylist(createdPlaylist);
+                  audioRef.current.load();
                 }}
               >
                 <p className={styles['song-name']}>

@@ -591,7 +591,7 @@ const album8 = new Album(
     {
       name: 'Maple',
       id: uuidv4(),
-      credits: 'Arbour ,Aarigod',
+      credits: 'Arbour, Aarigod',
       audio: 'https://mp3.chillhop.com/serve.php/?mp3=13015',
       active: false,
     },

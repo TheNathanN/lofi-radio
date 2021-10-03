@@ -6,7 +6,7 @@ import { getAlbumInfo } from '../../data/music';
 
 const PlayerController = () => {
   const [isPlaying, setIsPlaying] = useState(false);
-  const { audioPlayer, selectedAlbum, selectedSong, playlist, setPlaylist } =
+  const { audioRef, selectedAlbum, selectedSong, playlist, setPlaylist } =
     useContext(AppContext);
   const albumArray = getAlbumInfo(selectedAlbum);
   const _albumInfo = albumArray[0];
@@ -17,15 +17,13 @@ const PlayerController = () => {
 
   useEffect(() => {
     if (isPlaying) {
-      audioPlayer.current.load();
-      audioPlayer.current.play();
+      audioRef.current.play();
     } else if (!isPlaying && selectedSong) {
-      audioPlayer.current.load();
-      audioPlayer.current.pause();
+      audioRef.current.pause();
     } else {
       return;
     }
-  }, [isPlaying, audioPlayer, selectedSong]);
+  }, [isPlaying, audioRef, selectedSong]);
 
   return (
     <div className={styles['controller-container']}>
@@ -42,7 +40,7 @@ const PlayerController = () => {
             <p className={styles['artists-name']}> {playlist[0].credits} </p>
           </div>
           <div className={styles.player}>
-            <audio ref={audioPlayer}>
+            <audio ref={audioRef}>
               <source src={playlist[0].audio} />
             </audio>
             <div className={styles['progress-bar']}>
