@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import AppContext from './app-context';
 
 const AppState = props => {
@@ -7,6 +7,7 @@ const AppState = props => {
   const [selectedSong, setSelectedSong] = useState('');
   const [playlist, setPlaylist] = useState([]);
   const [searchedAlbum, setSearchedAlbum] = useState('');
+  const audioPlayer = useRef();
 
   return (
     <AppContext.Provider
@@ -21,6 +22,7 @@ const AppState = props => {
         setPlaylist,
         searchedAlbum,
         setSearchedAlbum,
+        audioPlayer,
       }}
     >
       {props.children}

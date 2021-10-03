@@ -6,16 +6,26 @@ import { getAlbumInfo } from '../../data/music';
 
 const PlayerController = () => {
   const [isPlaying, setIsPlaying] = useState(false);
-  const { selectedAlbum, selectedSong, playlist, setPlaylist } =
+  const { audioPlayer, selectedAlbum, selectedSong, playlist, setPlaylist } =
     useContext(AppContext);
   const albumArray = getAlbumInfo(selectedAlbum);
   const _albumInfo = albumArray[0];
 
-  const togglePlayPause = () => {
+  const playPauseHandler = () => {
     setIsPlaying(!isPlaying);
   };
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    if (isPlaying) {
+      audioPlayer.current.load();
+      audioPlayer.current.play();
+    } else if (!isPlaying && selectedSong) {
+      audioPlayer.current.load();
+      audioPlayer.current.pause();
+    } else {
+      return;
+    }
+  }, [isPlaying, audioPlayer, selectedSong]);
 
   return (
     <div className={styles['controller-container']}>
@@ -32,7 +42,7 @@ const PlayerController = () => {
             <p className={styles['artists-name']}> {playlist[0].credits} </p>
           </div>
           <div className={styles.player}>
-            <audio>
+            <audio ref={audioPlayer}>
               <source src={playlist[0].audio} />
             </audio>
             <div className={styles['progress-bar']}>
@@ -48,17 +58,17 @@ const PlayerController = () => {
 
             <div className={styles['control-btns']}>
               <button>
-                <i class='fas fa-step-backward'></i>
+                <i className='fas fa-step-backward'></i>
               </button>
-              <button onClick={togglePlayPause}>
+              <button onClick={playPauseHandler}>
                 {!isPlaying ? (
-                  <i class='fas fa-play'></i>
+                  <i className='fas fa-play'></i>
                 ) : (
-                  <i class='fas fa-pause'></i>
+                  <i className='fas fa-pause'></i>
                 )}
               </button>
-              <button>
-                <i class='fas fa-step-forward'></i>
+              <button></button>
+                <i className='fas fa-step-forward'></i>
               </button>
             </div>
           </div>

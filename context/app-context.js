@@ -11,6 +11,7 @@ const playlist = [];
 const setPlaylist = () => {};
 const searchedAlbum = '';
 const setSearchedAlbum = () => {};
+let audioPlayer;
 
 // Context
 const AppContext = createContext({
@@ -24,6 +25,7 @@ const AppContext = createContext({
   setPlaylist,
   searchedAlbum,
   setSearchedAlbum,
+  audioPlayer,
 });
 
 export default AppContext;
