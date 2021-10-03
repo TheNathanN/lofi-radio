@@ -8,6 +8,7 @@ const AppState = props => {
   const [playlist, setPlaylist] = useState();
   const [searchedAlbum, setSearchedAlbum] = useState('');
   const audioRef = useRef();
+  const progressRef = useRef();
 
   return (
     <AppContext.Provider
@@ -23,6 +24,7 @@ const AppState = props => {
         searchedAlbum,
         setSearchedAlbum,
         audioRef,
+        progressRef,
       }}
     >
       {props.children}

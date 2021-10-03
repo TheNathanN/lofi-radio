@@ -12,6 +12,7 @@ const setPlaylist = () => {};
 const searchedAlbum = '';
 const setSearchedAlbum = () => {};
 let audioRef;
+let progressRef;
 
 // Context
 const AppContext = createContext({
@@ -26,6 +27,7 @@ const AppContext = createContext({
   searchedAlbum,
   setSearchedAlbum,
   audioRef,
+  progressRef,
 });
 
 export default AppContext;

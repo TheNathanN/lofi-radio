@@ -46,15 +46,17 @@
 
   .time {
     margin-right: 1rem;
+    width: 3.5rem;
   }
 
   .duration {
     margin-left: 1rem;
+    width: 3.5rem;
   }
 
   input {
-    --bar-bg: white;
-    --seek-before-width: 100px;
+    --bar-bg: transparent;
+    --seek-before-width: 0;
     --seek-before-color: #669bbe;
     --knobby: black;
     --selectedKnobby: gray;
@@ -71,7 +73,8 @@
       width: 100%;
       appearance: none;
       background: var(--bar-bg);
-      border-radius: 10px;
+      border: 1px solid black;
+      border-radius: 5px;
       position: relative;
       height: 11px;
       outline: none;
@@ -82,6 +85,8 @@
       width: 100%;
       appearance: none;
       background: var(--bar-bg);
+      border: 1px solid black;
+      border-radius: 5px;
       border-radius: 10px;
       position: relative;
       height: 11px;
@@ -114,9 +119,9 @@
       height: 11px;
     }
 
-    &::-webkit-slider-thumb {
-      -webkit-appearance: none;
-    }
+    // &::-webkit-slider-thumb {
+    //   // -webkit-appearance: none;
+    // }
   }
 }
 

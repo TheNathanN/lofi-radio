@@ -7,18 +7,28 @@ import { getAlbumInfo } from '../../data/music';
 const PlayerController = () => {
   const {
     audioRef,
+    progressRef,
     selectedAlbum,
     setSelectedSong,
     selectedSong,
     playlist,
     setPlaylist,
   } = useContext(AppContext);
+
   const [isPlaying, setIsPlaying] = useState(false);
+  const [duration, setDuration] = useState(0);
+  const [currentTime, setCurrentTime] = useState(0);
+
   const albumArray = getAlbumInfo(selectedAlbum);
   const _albumInfo = albumArray[0];
-  // const { duration, currentTime } = audioRef.current;
 
   useEffect(() => {
+    if (audioRef.current) {
+      const seconds = Math.floor(audioRef.current.duration);
+      setDuration(seconds);
+      progressRef.current.max = seconds;
+    }
+
     if (isPlaying) {
       audioRef.current.play();
     } else if (!isPlaying && selectedSong) {
@@ -26,7 +36,24 @@ const PlayerController = () => {
     } else {
       return;
     }
-  }, [isPlaying, audioRef, selectedSong]);
+  }, [audioRef, isPlaying, selectedSong]);
+
+  const calculateTime = secs => {
+    const minutes = Math.floor(secs / 60);
+    const returnMinutes = minutes < 10 ? `0${minutes}` : `${minutes}`;
+    const seconds = Math.floor(secs % 60);
+    const returnSeconds = seconds < 10 ? `0${seconds}` : `${seconds}`;
+    return `${returnMinutes}:${returnSeconds}`;
+  };
+
+  const progressHandler = () => {
+    audioRef.current.currentTime = progressRef.current.value;
+    progressRef.current.style.setProperty(
+      '--seek-before-width',
+      `${(progressRef.current.value / duration) * 100}%`
+    );
+    setCurrentTime(progressRef.current.value);
+  };
 
   const nextSongHandler = () => {
     const currentPlaylist = [...playlist];
@@ -84,11 +111,18 @@ const PlayerController = () => {
 
             <div className={styles['progress-bar']}>
               {/* current time */}
-              <div className={styles.time}>0:00</div>
+              <div className={styles.time}>{calculateTime(currentTime)}</div>
               {/* progress bar */}
-              <input type='range' />
+              <input
+                type='range'
+                defaultValue='0'
+                ref={progressRef}
+                onChange={progressHandler}
+              />
               {/* duration */}
-              <div className={styles.duration}>2:50</div>
+              <div className={styles.duration}>
+                {duration ? calculateTime(duration) : '0:00'}
+              </div>
             </div>
 
             <div className={styles['control-btns']}>
