@@ -67,7 +67,7 @@ const PlayerController = () => {
                   <i className='fas fa-pause'></i>
                 )}
               </button>
-              <button></button>
+              <button>
                 <i className='fas fa-step-forward'></i>
               </button>
             </div>
