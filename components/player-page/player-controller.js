@@ -37,9 +37,16 @@ const PlayerController = () => {
     } else {
       return;
     }
-  }, [audioRef, isPlaying, selectedSong, progressRef, setDuration]);
+  }, [audioRef, isPlaying, selectedSong, progressRef, setDuration, duration]);
 
-  const calculateTime = secs => {
+  const timeUpdateHandler = e => {
+    const current = e.target.currentTime;
+    const duration = e.target.duration;
+    setDuration(duration);
+    setCurrentTime(current);
+  };
+
+  const formatTime = secs => {
     const minutes = Math.floor(secs / 60);
     const returnMinutes = minutes < 10 ? `0${minutes}` : `${minutes}`;
     const seconds = Math.floor(secs % 60);
@@ -128,23 +135,30 @@ const PlayerController = () => {
           </div>
 
           <div className={styles.player}>
-            <audio ref={audioRef} onEnded={nextSongHandler}>
+            <audio
+              onTimeUpdate={timeUpdateHandler}
+              onLoadedMetadata={timeUpdateHandler}
+              ref={audioRef}
+              onEnded={nextSongHandler}
+            >
               <source src={playlist[0].audio} />
             </audio>
 
             <div className={styles['progress-bar']}>
               {/* current time */}
-              <div className={styles.time}>{calculateTime(currentTime)}</div>
+              <div className={styles.time}>{formatTime(currentTime)}</div>
               {/* progress bar */}
               <input
                 type='range'
-                defaultValue='0'
+                min={0}
+                max={duration && !isNaN(duration) ? duration : 0}
                 ref={progressRef}
+                value={currentTime}
                 onChange={progressHandler}
               />
               {/* duration */}
               <div className={styles.duration}>
-                {duration ? calculateTime(duration) : '0:00'}
+                {duration && !isNaN(duration) ? formatTime(duration) : '00:00'}
               </div>
             </div>
 

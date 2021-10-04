@@ -98,15 +98,13 @@
 
     &::before {
       content: '';
-      height: 11px;
+      height: 9px;
       width: var(--seek-before-width);
       background-color: var(--seek-before-color);
-      border-top-left-radius: 10px;
-      border-bottom-left-radius: 10px;
+      border-radius: 10px;
       position: absolute;
-      top: -1;
+      top: 0;
       left: 0;
-      z-index: 2;
       cursor: pointer;
     }
 
