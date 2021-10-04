@@ -8,6 +8,7 @@ const PlayerController = () => {
   const {
     audioRef,
     progressRef,
+    animationRef,
     selectedAlbum,
     setSelectedSong,
     selectedSong,
@@ -36,7 +37,7 @@ const PlayerController = () => {
     } else {
       return;
     }
-  }, [audioRef, isPlaying, selectedSong]);
+  }, [audioRef, isPlaying, selectedSong, progressRef, setDuration]);
 
   const calculateTime = secs => {
     const minutes = Math.floor(secs / 60);
@@ -46,13 +47,35 @@ const PlayerController = () => {
     return `${returnMinutes}:${returnSeconds}`;
   };
 
-  const progressHandler = () => {
-    audioRef.current.currentTime = progressRef.current.value;
+  const changePlayerCurrentTime = () => {
     progressRef.current.style.setProperty(
       '--seek-before-width',
       `${(progressRef.current.value / duration) * 100}%`
     );
     setCurrentTime(progressRef.current.value);
+  };
+
+  const progressHandler = () => {
+    audioRef.current.currentTime = progressRef.current.value;
+    changePlayerCurrentTime();
+  };
+
+  const whilePlaying = () => {
+    progressRef.current.value = audioRef.current.currentTime;
+    changePlayerCurrentTime();
+    animationRef.current = requestAnimationFrame(whilePlaying);
+  };
+
+  const playPauseHandler = () => {
+    const prevVal = isPlaying;
+    setIsPlaying(!prevVal);
+    if (!prevVal) {
+      audioRef.current.play();
+      animationRef.current = requestAnimationFrame(whilePlaying);
+    } else {
+      audioRef.current.pause();
+      cancelAnimationFrame(animationRef.current);
+    }
   };
 
   const nextSongHandler = () => {
@@ -129,7 +152,7 @@ const PlayerController = () => {
               <button onClick={prevSongHandler}>
                 <i className='fas fa-step-backward'></i>
               </button>
-              <button onClick={() => setIsPlaying(!isPlaying)}>
+              <button onClick={playPauseHandler}>
                 {!isPlaying ? (
                   <i className='fas fa-play'></i>
                 ) : (

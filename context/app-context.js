@@ -13,6 +13,7 @@ const searchedAlbum = '';
 const setSearchedAlbum = () => {};
 let audioRef;
 let progressRef;
+let animationRef;
 
 // Context
 const AppContext = createContext({
@@ -28,6 +29,7 @@ const AppContext = createContext({
   setSearchedAlbum,
   audioRef,
   progressRef,
+  animationRef,
 });
 
 export default AppContext;
