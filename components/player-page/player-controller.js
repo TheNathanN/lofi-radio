@@ -8,8 +8,8 @@ const PlayerController = () => {
   const {
     audioRef,
     progressRef,
-    animationRef,
     selectedAlbum,
+    setSelectedAlbum,
     setSelectedSong,
     selectedSong,
     playlist,
@@ -19,17 +19,12 @@ const PlayerController = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
+  const [animationPercentage, setAnimationPercentage] = useState(0);
 
   const albumArray = getAlbumInfo(selectedAlbum);
   const _albumInfo = albumArray[0];
 
   useEffect(() => {
-    if (audioRef.current) {
-      const seconds = Math.floor(audioRef.current.duration);
-      setDuration(seconds);
-      progressRef.current.max = seconds;
-    }
-
     if (isPlaying) {
       audioRef.current.play();
     } else if (!isPlaying && selectedSong) {
@@ -37,13 +32,19 @@ const PlayerController = () => {
     } else {
       return;
     }
-  }, [audioRef, isPlaying, selectedSong, progressRef, setDuration, duration]);
+  }, [audioRef, isPlaying, selectedSong, progressRef]);
+
+  // Track Bar Handlers
 
   const timeUpdateHandler = e => {
     const current = e.target.currentTime;
     const duration = e.target.duration;
+    const roundedCurrent = Math.round(current);
+    const roundedDuration = Math.round(duration);
+    const animationPerc = Math.round((roundedCurrent / roundedDuration) * 100);
     setDuration(duration);
     setCurrentTime(current);
+    setAnimationPercentage(animationPerc);
   };
 
   const formatTime = secs => {
@@ -54,34 +55,19 @@ const PlayerController = () => {
     return `${returnMinutes}:${returnSeconds}`;
   };
 
-  const changePlayerCurrentTime = () => {
-    progressRef.current.style.setProperty(
-      '--seek-before-width',
-      `${(progressRef.current.value / duration) * 100}%`
-    );
-    setCurrentTime(progressRef.current.value);
-  };
-
-  const progressHandler = () => {
+  const progressHandler = e => {
     audioRef.current.currentTime = progressRef.current.value;
-    changePlayerCurrentTime();
   };
 
-  const whilePlaying = () => {
-    progressRef.current.value = audioRef.current.currentTime;
-    changePlayerCurrentTime();
-    animationRef.current = requestAnimationFrame(whilePlaying);
-  };
+  // Control Handlers
 
   const playPauseHandler = () => {
     const prevVal = isPlaying;
     setIsPlaying(!prevVal);
     if (!prevVal) {
       audioRef.current.play();
-      animationRef.current = requestAnimationFrame(whilePlaying);
     } else {
       audioRef.current.pause();
-      cancelAnimationFrame(animationRef.current);
     }
   };
 
@@ -94,6 +80,8 @@ const PlayerController = () => {
       audioRef.current.load();
     } else {
       setIsPlaying(false);
+      setSelectedSong('');
+      setSelectedAlbum('');
     }
   };
 
@@ -116,6 +104,13 @@ const PlayerController = () => {
     } else {
       setIsPlaying(false);
     }
+  };
+
+  //Add the Styles for Track
+
+  const trackAnim = {
+    transform: `translateX(${animationPercentage}%)`,
+    background: `${_albumInfo ? _albumInfo.color1 : 'black'}`,
   };
 
   return (
@@ -148,14 +143,28 @@ const PlayerController = () => {
               {/* current time */}
               <div className={styles.time}>{formatTime(currentTime)}</div>
               {/* progress bar */}
-              <input
-                type='range'
-                min={0}
-                max={duration && !isNaN(duration) ? duration : 0}
-                ref={progressRef}
-                value={currentTime}
-                onChange={progressHandler}
-              />
+              <div
+                className={styles['track']}
+                style={{
+                  background: `${_albumInfo ? _albumInfo.color2 : 'white'}`,
+                  border: `2px solid ${
+                    _albumInfo ? _albumInfo.color1 : 'white'
+                  }`,
+                }}
+              >
+                <input
+                  type='range'
+                  min={0}
+                  max={duration && !isNaN(duration) ? duration : 0}
+                  ref={progressRef}
+                  value={currentTime}
+                  onChange={progressHandler}
+                />
+                <div
+                  className={styles['animate-track']}
+                  style={trackAnim}
+                ></div>
+              </div>
               {/* duration */}
               <div className={styles.duration}>
                 {duration && !isNaN(duration) ? formatTime(duration) : '00:00'}
