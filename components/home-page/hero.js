@@ -15,14 +15,15 @@ import BirdsOne from '../svgs/birds-one';
 import BirdsTwo from '../svgs/birds-two';
 
 const Hero = () => {
-  const { setOnPlayer, setSearchedAlbum, setSelectedSong } =
+  const { setOnPlayer, setSearchedAlbum, setSelectedSong, setSelectedAlbum } =
     useContext(AppContext);
 
   useEffect(() => {
     setOnPlayer(false);
     setSearchedAlbum('');
     setSelectedSong('');
-  }, [setOnPlayer, setSearchedAlbum, setSelectedSong]);
+    setSelectedAlbum('');
+  }, [setOnPlayer, setSearchedAlbum, setSelectedSong, setSelectedAlbum]);
 
   return (
     <header className={styles.header}>

@@ -15,8 +15,8 @@ const album1 = new Album(
   'Inside a Saltwater Room',
   'Delayde, anybodyy',
   'https://chillhop.com/wp-content/uploads/2021/09/6a9ef8ac00e168d3308fdf9e336874c03fab829d-1024x1024.jpg',
-  '#7B4DCD',
   '#A7DDF5',
+  '#7B4DCD',
   [
     {
       name: 'Where The Sun Goes',
@@ -79,8 +79,8 @@ const album2 = new Album(
   'Passing Notes',
   'Middle School',
   'https://chillhop.com/wp-content/uploads/2021/07/5821e04fd52fa668a0b9890f213cbb12e454cc6b-1024x1024.jpg',
+  '#ED5F34',
   '#213C52',
-  '#8A5743',
   [
     {
       name: 'When I Get Up In the Morning',
@@ -137,8 +137,8 @@ const album3 = new Album(
   'Meraki',
   'Juan Rios',
   'https://chillhop.com/wp-content/uploads/2021/07/4163ebb931e06d4ee8eb184295c0246d4a5055f7-1024x1024.jpg',
-  '#2E1536',
   '#FE8F74',
+  '#2E1536',
   [
     {
       name: 'Cabaña',
@@ -231,8 +231,8 @@ const album4 = new Album(
   'Wanderlust',
   'Makzo',
   'https://chillhop.com/wp-content/uploads/2021/06/23b2ff959731b56ea8545828b462311e8b1a2bcc-1024x1024.jpg',
-  '#EAB8B4',
   '#BA9CD3',
+  '#1153B6',
   [
     {
       name: 'Viatecture',
@@ -301,8 +301,8 @@ const album5 = new Album(
   'Aftersome',
   'Toonorth',
   'https://chillhop.com/wp-content/uploads/2021/05/732128e1da8fd5f6292ffc1926a2ea840a54f4d0-1024x1024.jpg',
-  '#374C69',
   '#FDA61E',
+  '#374C69',
   [
     {
       name: 'Dawn',
@@ -423,8 +423,8 @@ const album7 = new Album(
   'Into The Past',
   'C Y G N',
   'https://chillhop.com/wp-content/uploads/2021/02/d12927eedcc2f5afba2ab049a4a1ea46c2266ae3-1024x1024.jpg',
-  '#4B3462',
   '#7699D2',
+  '#4B3462',
   [
     {
       name: 'Roses n Flames',
@@ -499,8 +499,8 @@ const album8 = new Album(
   'Forest Lore',
   'Aarigod',
   'https://chillhop.com/wp-content/uploads/2021/02/7f102bdde417f6ead9a120b2b931449e5c12b4da-1024x1024.jpg',
-  '#363223',
   '#63BE6E',
+  '#363223',
   [
     {
       name: 'Kinsfolk',
@@ -569,8 +569,8 @@ const album9 = new Album(
   'Anecdotes',
   'Makzo',
   'https://chillhop.com/wp-content/uploads/2020/11/f78c39b4bb6313ddd0354bef896c591bfb490ff8-1024x1024.jpg',
-  '#28569D',
   '#F9C25D',
+  '#28569D',
   [
     {
       name: 'Hereafter',
@@ -615,8 +615,8 @@ const album10 = new Album(
   'Hologramophone',
   'Aviino',
   'https://chillhop.com/wp-content/uploads/2020/10/23fdd99adc3e16abcb67b004ea3e748ebf433a49-1024x1024.jpg',
-  '#5095D8',
   '#F178BA',
+  '#4583C7',
   [
     {
       name: 'Slim Bobby',

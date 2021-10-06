@@ -1,10 +1,12 @@
 import Head from 'next/head';
 import '../styles/globals.scss';
+import { AnimateSharedLayout } from 'framer-motion';
 
 import AppState from '../context/app-state';
 
 import NavBar from '../components/nav-bar';
 import Footer from '../components/footer';
+import router from 'next/router';
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -20,7 +22,9 @@ function MyApp({ Component, pageProps }) {
       </Head>
       <AppState>
         <NavBar />
-        <Component {...pageProps} />
+        <AnimateSharedLayout exitBeforeEnter>
+          <Component {...pageProps} />
+        </AnimateSharedLayout>
         <Footer />
       </AppState>
     </>

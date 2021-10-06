@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import { motion } from 'framer-motion';
 
 import Hero from '../components/home-page/hero';
 import Albums from '../components/home-page/albums';
@@ -13,8 +14,10 @@ const HomePage = () => {
           content='A relaxing radio app for all of your lofi needs.'
         />
       </Head>
-      <Hero />
-      <Albums />
+      <motion.div exit={{ opacity: 0 }}>
+        <Hero />
+        <Albums />
+      </motion.div>
     </>
   );
 };

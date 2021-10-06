@@ -114,7 +114,14 @@ const PlayerController = () => {
   };
 
   return (
-    <div className={styles['controller-container']}>
+    <div
+      className={styles['controller-container']}
+      style={{
+        background: `linear-gradient(9deg, ${
+          _albumInfo ? _albumInfo.color2 : 'black'
+        } , rgb(22, 22, 41) 30%)`,
+      }}
+    >
       {selectedSong && (
         <div className={styles['album-photo']}>
           <Image
