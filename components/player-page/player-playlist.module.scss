@@ -83,3 +83,9 @@
   color: white;
   text-align: center;
 }
+
+@media (max-width: 1100px) {
+  .playlist {
+    padding: 4rem 0;
+  }
+}

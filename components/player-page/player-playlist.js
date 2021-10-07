@@ -17,10 +17,8 @@ const PlayerPlaylist = () => {
     audioRef,
   } = useContext(AppContext);
 
-  const albumArray = getAlbumInfo(selectedAlbum);
-  const searchedAlbumArray = getAlbumInfo(searchedAlbum);
-  const _albumInfo = albumArray[0];
-  const _searchedAlbumInfo = searchedAlbumArray[0];
+  const [_albumInfo] = getAlbumInfo(selectedAlbum);
+  const [_searchedAlbumInfo] = getAlbumInfo(searchedAlbum);
 
   const songSelectHandler = song => {
     const createdPlaylist = [];

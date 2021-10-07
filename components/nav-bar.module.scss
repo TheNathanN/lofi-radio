@@ -1,6 +1,6 @@
 .nav-bar {
   display: flex;
-  height: 3rem;
+  height: 4rem;
   position: fixed;
   width: 100%;
   top: 0;
@@ -23,8 +23,8 @@
 
 .player-nav {
   display: flex;
-  height: 3rem;
-  width: 20%;
+  height: 4rem;
+  width: 100%;
   position: fixed;
   top: 0;
   background-color: rgba(0, 0, 0, 0.637);
@@ -43,4 +43,8 @@
       outline: white;
     }
   }
+}
+
+.icons {
+  font-size: 1.2rem;
 }

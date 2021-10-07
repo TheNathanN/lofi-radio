@@ -21,8 +21,7 @@ const PlayerController = () => {
   const [currentTime, setCurrentTime] = useState(0);
   const [animationPercentage, setAnimationPercentage] = useState(0);
 
-  const albumArray = getAlbumInfo(selectedAlbum);
-  const _albumInfo = albumArray[0];
+  const [_albumInfo] = getAlbumInfo(selectedAlbum);
 
   useEffect(() => {
     if (isPlaying) {
@@ -114,14 +113,7 @@ const PlayerController = () => {
   };
 
   return (
-    <div
-      className={styles['controller-container']}
-      style={{
-        background: `linear-gradient(9deg, ${
-          _albumInfo ? _albumInfo.color2 : 'black'
-        } , rgb(22, 22, 41) 30%)`,
-      }}
-    >
+    <div className={styles['controller-container']}>
       {selectedSong && (
         <div className={styles['album-photo']}>
           <Image

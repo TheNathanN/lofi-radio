@@ -1,19 +1,23 @@
 import { createContext } from 'react';
 
 // Empty Variables for Auto-Complete
-const onPlayer = '';
-const setOnPlayer = () => {};
-const selectedAlbum = '';
-const setSelectedAlbum = () => {};
-const selectedSong = '';
-const setSelectedSong = () => {};
-const playlist = [];
-const setPlaylist = () => {};
-const searchedAlbum = '';
-const setSearchedAlbum = () => {};
+let onPlayer;
+let setOnPlayer;
+let selectedAlbum;
+let setSelectedAlbum;
+let selectedSong;
+let setSelectedSong;
+let playlist;
+let setPlaylist;
+let searchedAlbum;
+let setSearchedAlbum;
+let open;
+let setOpen;
 let audioRef;
 let progressRef;
 let animationRef;
+let menuMode;
+let setMenuMode;
 
 // Context
 const AppContext = createContext({
@@ -27,6 +31,10 @@ const AppContext = createContext({
   setPlaylist,
   searchedAlbum,
   setSearchedAlbum,
+  open,
+  setOpen,
+  menuMode,
+  setMenuMode,
   audioRef,
   progressRef,
   animationRef,
