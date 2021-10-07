@@ -3,3 +3,9 @@
   right: 7rem;
   top: 5rem;
 }
+
+@media (max-width: 990px) {
+  .birds-two {
+    display: none;
+  }
+}

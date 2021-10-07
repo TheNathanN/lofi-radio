@@ -6,7 +6,6 @@
 }
 
 .albums-container {
-  height: 100%;
   width: 20%;
   background-color: black;
   overflow: scroll;
@@ -18,16 +17,6 @@
 }
 
 .songs-container {
-  height: 100%;
   width: 20%;
   background-color: black;
-}
-
-@media only screen and (max-width: 1300px) {
-  .albums-container {
-    display: none;
-  }
-  .songs-container {
-    display: none;
-  }
 }

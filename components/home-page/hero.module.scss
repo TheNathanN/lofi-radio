@@ -5,7 +5,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 35rem;
+  height: 45rem;
   position: relative;
 
   h1 {
@@ -13,6 +13,7 @@
     text-align: center;
     margin-bottom: 2.5rem;
     color: #080f0f;
+    z-index: 5;
 
     span {
       display: block;
@@ -33,6 +34,7 @@
       cursor: pointer;
       width: 10rem;
       transition: ease-out 0.2s;
+      z-index: 9;
 
       &:hover {
         font-size: 0.97rem;
@@ -61,7 +63,4 @@
   height: 13rem;
   background-color: #62a87c;
   border-radius: 100% 100% 0 0;
-}
-
-@media (max-width: 1240px) {
 }

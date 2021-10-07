@@ -1,7 +1,19 @@
 .person {
-  z-index: 3;
+  z-index: 6;
   width: 9rem;
   position: absolute;
   right: 11rem;
   bottom: 5rem;
+}
+
+@media (max-width: 800px) {
+  .person {
+    right: 6rem;
+  }
+}
+
+@media (max-width: 613px) {
+  .person {
+    right: 0rem;
+  }
 }

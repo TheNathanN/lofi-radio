@@ -196,6 +196,7 @@ const PlayerController = () => {
           </div>
         </div>
       )}
+      {/* Shows if there is no selected song*/}
       {!selectedSong && <p>Choose an album and song to start listening!</p>}
     </div>
   );

@@ -15,7 +15,7 @@ const Footer = () => {
             <a>Player</a>
           </Link>
         </div>
-        <p>
+        <p className={styles.credit}>
           Designed & Coded by{' '}
           <Link href='/'>
             <a target='blank'>Nathan Nicholson</a>

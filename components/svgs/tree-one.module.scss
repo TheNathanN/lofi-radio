@@ -5,3 +5,9 @@
   bottom: 10.5rem;
   width: 9rem;
 }
+
+@media (max-width: 1200px) {
+  .tree-one {
+    display: none;
+  }
+}

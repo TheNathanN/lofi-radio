@@ -4,3 +4,9 @@
   top: 4rem;
   z-index: 1;
 }
+
+@media (max-width: 613px) {
+  .birds-one {
+    display: none;
+  }
+}
