@@ -105,6 +105,7 @@
     }
 
     &::-moz-range-thumb {
+      -webkit-appearance: none;
       height: 15px;
       width: 15px;
     }

@@ -86,8 +86,28 @@
   text-align: center;
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 1200px) {
   .playlist {
-    padding: 4rem 0;
+    padding: 4rem auto;
+    img {
+      width: 20rem;
+    }
+  }
+
+  .song-list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .song-details {
+    width: 15rem;
+    margin: 1rem;
+  }
+
+  .selected-song {
+    width: 15rem;
+    margin: 1rem;
   }
 }

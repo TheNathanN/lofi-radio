@@ -114,7 +114,7 @@ const PlayerController = () => {
 
   return (
     <div className={styles['controller-container']}>
-      {selectedSong && (
+      {selectedAlbum && (
         <div className={styles['album-photo']}>
           <Image
             src={_albumInfo.img}
@@ -189,7 +189,7 @@ const PlayerController = () => {
         </div>
       )}
       {/* Shows if there is no selected song*/}
-      {!selectedSong && (
+      {!selectedAlbum && (
         <p className={styles.empty}>
           Choose an album and song to start listening!
         </p>

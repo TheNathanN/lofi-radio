@@ -13,6 +13,7 @@ const PlayerPlaylist = () => {
     selectedAlbum,
     setPlaylist,
     setOpen,
+    setMenuMode,
     searchedAlbum,
     audioRef,
   } = useContext(AppContext);
@@ -54,6 +55,7 @@ const PlayerPlaylist = () => {
   const onClickHandler = song => {
     songSelectHandler(song);
     setOpen(false);
+    setMenuMode('main');
   };
 
   return (
