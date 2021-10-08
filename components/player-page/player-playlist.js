@@ -12,7 +12,7 @@ const PlayerPlaylist = () => {
     setSelectedAlbum,
     selectedAlbum,
     setPlaylist,
-    playlist,
+    setOpen,
     searchedAlbum,
     audioRef,
   } = useContext(AppContext);
@@ -51,6 +51,11 @@ const PlayerPlaylist = () => {
     }
   };
 
+  const onClickHandler = song => {
+    songSelectHandler(song);
+    setOpen(false);
+  };
+
   return (
     <>
       {/* --------- This shows if there is only an album selected and no search --------- */}
@@ -75,7 +80,7 @@ const PlayerPlaylist = () => {
                     : styles['song-details']
                 }
                 key={song.id}
-                onClick={() => songSelectHandler(song)}
+                onClick={() => onClickHandler(song)}
               >
                 <p className={styles['song-name']}>
                   {`${_albumInfo.songs.indexOf(song) + 1}. ${song.name}`}
@@ -108,7 +113,7 @@ const PlayerPlaylist = () => {
                     : styles['song-details']
                 }
                 key={song.id}
-                onClick={() => songSelectHandler(song)}
+                onClick={() => onClickHandler(song)}
               >
                 <p className={styles['song-name']}>
                   {`${_searchedAlbumInfo.songs.indexOf(song) + 1}. ${

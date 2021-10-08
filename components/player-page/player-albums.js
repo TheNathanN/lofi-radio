@@ -7,7 +7,7 @@ import { albums } from '../../data/music';
 import AppContext from '../../context/app-context';
 
 const PlayerAlbums = () => {
-  const { setSelectedAlbum, setSearchedAlbum, selectedAlbum } =
+  const { setSelectedAlbum, setSearchedAlbum, selectedAlbum, setMenuMode } =
     useContext(AppContext);
 
   return (
@@ -26,6 +26,7 @@ const PlayerAlbums = () => {
               ) {
                 !selectedAlbum && setSelectedAlbum(album.name);
                 selectedAlbum && setSearchedAlbum(album.name);
+                setMenuMode('songs');
               }
             }}
           >

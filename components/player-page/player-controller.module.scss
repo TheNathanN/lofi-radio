@@ -6,6 +6,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 0.7rem;
 }
 
 .album-photo {
@@ -132,14 +133,34 @@
 
 @media (max-width: 690px) {
   .player {
-    width: 80%;
+    width: 70%;
   }
 }
 
 @media (max-width: 430px) {
+  .empty {
+    padding: 0 1rem;
+  }
+
+  .song-credits {
+    margin: 1.5rem 0;
+  }
+
   .album-photo {
     img {
       width: 13rem;
+    }
+  }
+
+  .progress-bar {
+    .time {
+      font-size: 0.7rem;
+      margin: 0;
+    }
+
+    .duration {
+      font-size: 0.7rem;
+      margin: 0;
     }
   }
 }

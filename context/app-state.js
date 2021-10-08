@@ -8,7 +8,7 @@ const AppState = props => {
   const [playlist, setPlaylist] = useState();
   const [searchedAlbum, setSearchedAlbum] = useState('');
   const [open, setOpen] = useState(false);
-  const [menuMode, setMenuMode] = useState('main'); // can only be 'main', 'albums', 'playlist'
+  const [menuMode, setMenuMode] = useState('main'); // can only be 'main', 'albums', 'songs'
   const audioRef = useRef();
   const progressRef = useRef();
   const animationRef = useRef();

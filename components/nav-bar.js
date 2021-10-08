@@ -26,7 +26,7 @@ const NavBar = () => {
         {!open && (
           <i className='fas fa-bars' onClick={() => setOpen(!open)}></i>
         )}
-        {open && <i class='fas fa-times' onClick={closeHandler}></i>}
+        {open && <i className='fas fa-times' onClick={closeHandler}></i>}
       </div>
     </nav>
   );
