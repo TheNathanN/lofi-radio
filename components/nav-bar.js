@@ -35,7 +35,7 @@ const NavBar = () => {
           <a>Lofi Radio</a>
         </Link>
       </div>
-      {mobileNav && (
+      {mobileNav && onPlayer && (
         <div className={styles.icons}>
           {!open && (
             <i className='fas fa-bars' onClick={() => setOpen(!open)}></i>
