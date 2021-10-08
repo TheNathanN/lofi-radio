@@ -21,7 +21,6 @@ const Hero = () => {
     setSelectedSong,
     setSelectedAlbum,
     setOpen,
-    setMenuMode,
   } = useContext(AppContext);
 
   useEffect(() => {
@@ -30,13 +29,11 @@ const Hero = () => {
     setSelectedSong('');
     setSelectedAlbum('');
     setOpen(false);
-    setMenuMode('main');
   }, [
     setOnPlayer,
     setSearchedAlbum,
     setSelectedSong,
     setSelectedAlbum,
-    setMenuMode,
     setOpen,
   ]);
 

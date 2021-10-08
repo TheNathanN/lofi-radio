@@ -8,8 +8,7 @@ import styles from './albums.module.scss';
 import AppContext from '../../context/app-context';
 
 const Albums = () => {
-  const { setSelectedAlbum, setSelectedArtist, selectedAlbum, selectedArtist } =
-    useContext(AppContext);
+  const { setSelectedAlbum, setMenuMode, setOpen } = useContext(AppContext);
 
   const router = useRouter();
 
@@ -28,6 +27,11 @@ const Albums = () => {
                 (e.target.outerText && e.target.outerText === album.artist)
               ) {
                 setSelectedAlbum(album.name);
+                if (window.innerWidth <= 1200) {
+                  setMenuMode('songs');
+                  setOpen(true);
+                }
+
                 router.push('/player');
               }
             }}

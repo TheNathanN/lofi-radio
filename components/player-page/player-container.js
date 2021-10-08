@@ -23,7 +23,6 @@ const PlayerContainer = () => {
   useEffect(() => {
     setOnPlayer(true);
     setSearchedAlbum('');
-    setMenuMode('main');
   }, [setOnPlayer, setSearchedAlbum, setMenuMode]);
 
   return (

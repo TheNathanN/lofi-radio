@@ -104,10 +104,16 @@
   .song-details {
     width: 15rem;
     margin: 1rem;
+    &:hover {
+      width: 15rem;
+    }
   }
 
   .selected-song {
     width: 15rem;
     margin: 1rem;
+    &:hover {
+      width: 15rem;
+    }
   }
 }
