@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from 'react';
-import Link from 'next/link';
+import router, { useRouter } from 'next/router';
 
 import styles from './hero.module.scss';
 import AppContext from '../../context/app-context';
@@ -21,7 +21,10 @@ const Hero = () => {
     setSelectedSong,
     setSelectedAlbum,
     setOpen,
+    setMenuMode,
   } = useContext(AppContext);
+
+  const router = useRouter();
 
   useEffect(() => {
     setOnPlayer(false);
@@ -37,6 +40,12 @@ const Hero = () => {
     setOpen,
   ]);
 
+  const onClickHandler = () => {
+    setMenuMode('albums');
+    router.push('player');
+    setOpen(true);
+  };
+
   return (
     <header className={styles.header}>
       <div className={styles.sun}></div>
@@ -45,11 +54,9 @@ const Hero = () => {
         Welcome <span>to</span> Lofi Radio
       </h1>
 
-      <Link href='/player'>
-        <a>
-          <button>OPEN PLAYER</button>
-        </a>
-      </Link>
+      <div className={styles.btn} onClick={onClickHandler}>
+        OPEN PLAYER
+      </div>
 
       <Person />
       <GrassOne />
