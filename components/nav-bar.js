@@ -6,6 +6,7 @@ import AppContext from '../context/app-context';
 
 const NavBar = () => {
   const { onPlayer, setOpen, open, setMenuMode } = useContext(AppContext);
+  const [windowWidth, setWindowWidth] = useState(0);
   const [mobileNav, setMobileNav] = useState(false);
 
   const closeHandler = () => {
@@ -13,7 +14,19 @@ const NavBar = () => {
     setMenuMode('main');
   };
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    function handleResize() {
+      setWindowWidth(window.innerWidth);
+    }
+
+    window.addEventListener('resize', handleResize);
+
+    if (windowWidth <= 1200) {
+      setMobileNav(true);
+    } else {
+      setMobileNav(false);
+    }
+  }, [setWindowWidth, windowWidth, setMobileNav]);
 
   return (
     <nav className={onPlayer ? styles['player-nav'] : styles['nav-bar']}>
@@ -22,12 +35,14 @@ const NavBar = () => {
           <a>Lofi Radio</a>
         </Link>
       </div>
-      <div className={styles.icons}>
-        {!open && (
-          <i className='fas fa-bars' onClick={() => setOpen(!open)}></i>
-        )}
-        {open && <i className='fas fa-times' onClick={closeHandler}></i>}
-      </div>
+      {mobileNav && (
+        <div className={styles.icons}>
+          {!open && (
+            <i className='fas fa-bars' onClick={() => setOpen(!open)}></i>
+          )}
+          {open && <i className='fas fa-times' onClick={closeHandler}></i>}
+        </div>
+      )}
     </nav>
   );
 };
