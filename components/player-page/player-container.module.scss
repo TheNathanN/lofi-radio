@@ -1,6 +1,6 @@
 .player-container {
   width: 100%;
-  height: 50rem;
+  height: 100vh;
   display: flex;
   justify-content: center;
 
@@ -44,30 +44,6 @@
       cursor: pointer;
       font-size: 1.2rem;
     }
-  }
-}
-
-@media (max-height: 800px) {
-  .player-container {
-    height: 45rem;
-  }
-}
-
-@media (min-height: 1120px) {
-  .player-container {
-    height: 90rem;
-  }
-}
-
-@media (min-height: 1270px) {
-  .player-container {
-    height: 100rem;
-  }
-}
-
-@media (min-height: 1544px) {
-  .player-container {
-    height: 100rem;
   }
 }
 
