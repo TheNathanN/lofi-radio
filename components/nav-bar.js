@@ -15,18 +15,20 @@ const NavBar = () => {
   };
 
   useEffect(() => {
-    function handleResize() {
-      setWindowWidth(window.innerWidth);
-    }
-
-    window.addEventListener('resize', handleResize);
-
     if (windowWidth <= 1200) {
       setMobileNav(true);
     } else {
       setMobileNav(false);
     }
-  }, [setWindowWidth, windowWidth, setMobileNav]);
+
+    function handleResize() {
+      setWindowWidth(window.innerWidth);
+    }
+
+    handleResize();
+
+    window.addEventListener('resize', handleResize);
+  }, [setWindowWidth, windowWidth]);
 
   return (
     <nav className={onPlayer ? styles['player-nav'] : styles['nav-bar']}>
