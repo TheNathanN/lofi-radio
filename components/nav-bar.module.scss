@@ -48,10 +48,15 @@
 .icons {
   font-size: 1.2rem;
   display: flex;
-  width: 3rem;
-  justify-content: space-between;
+  justify-content: flex-end;
 
   i {
     cursor: pointer;
   }
+}
+
+.back {
+  display: flex;
+  justify-content: center;
+  margin-right: 1rem;
 }

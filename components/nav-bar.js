@@ -46,10 +46,12 @@ const NavBar = () => {
           {open && (
             <>
               {menuMode !== 'main' && (
-                <i
-                  className='fas fa-chevron-left back'
-                  onClick={() => setMenuMode('main')}
-                ></i>
+                <div className={styles.back}>
+                  <i
+                    className='fas fa-chevron-left back'
+                    onClick={() => setMenuMode('main')}
+                  ></i>
+                </div>
               )}
               <i className='fas fa-times' onClick={closeHandler}></i>
             </>
