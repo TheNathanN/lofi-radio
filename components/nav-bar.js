@@ -49,7 +49,13 @@ const NavBar = () => {
                 <div className={styles.back}>
                   <i
                     className='fas fa-chevron-left back'
-                    onClick={() => setMenuMode('main')}
+                    onClick={() => {
+                      if (menuMode === 'albums') {
+                        setMenuMode('main');
+                      } else {
+                        setMenuMode('albums');
+                      }
+                    }}
                   ></i>
                 </div>
               )}

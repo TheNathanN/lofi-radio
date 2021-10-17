@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
+import { motion } from 'framer-motion';
 
 import { albums } from '../../data/music';
 import styles from './albums.module.scss';
