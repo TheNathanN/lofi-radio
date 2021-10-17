@@ -14,7 +14,12 @@ const Albums = () => {
   const router = useRouter();
 
   return (
-    <main className={styles.featured}>
+    <motion.main
+      className={styles.featured}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1, delay: 1.3 }}
+    >
       <h2>Albums</h2>
       <div className={styles['ft-container']}>
         {albums.map(album => (
@@ -43,7 +48,7 @@ const Albums = () => {
           </div>
         ))}
       </div>
-    </main>
+    </motion.main>
   );
 };
 
