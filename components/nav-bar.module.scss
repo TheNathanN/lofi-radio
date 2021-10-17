@@ -47,4 +47,11 @@
 
 .icons {
   font-size: 1.2rem;
+  display: flex;
+  width: 3rem;
+  justify-content: space-between;
+
+  i {
+    cursor: pointer;
+  }
 }
