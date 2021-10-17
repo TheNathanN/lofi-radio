@@ -1,16 +1,20 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 import styles from './tree-two.module.scss';
 
 const TreeTwo = () => {
   return (
-    <svg
+    <motion.svg
       className={styles['tree-two']}
       width='155'
       height='331'
       viewBox='0 0 155 331'
       fill='none'
       xmlns='http://www.w3.org/2000/svg'
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1, delay: 1 }}
     >
       <path
         d='M98.2896 241.745C129.563 236.096 145.589 179.69 134.084 115.758C122.579 51.8267 87.9002 4.57959 56.6263 10.2288C25.3525 15.878 9.32665 72.2843 20.8317 136.216C32.3367 200.147 67.0158 247.394 98.2896 241.745Z'
@@ -29,7 +33,7 @@ const TreeTwo = () => {
         fill='#55251D'
       />
       <path d='M68 331C68 331 102.688 319.75 135 331H68Z' fill='#4F8663' />
-    </svg>
+    </motion.svg>
   );
 };
 

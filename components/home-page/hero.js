@@ -1,5 +1,6 @@
 import React, { useEffect, useContext } from 'react';
-import router, { useRouter } from 'next/router';
+import { useRouter } from 'next/router';
+import { motion } from 'framer-motion';
 
 import styles from './hero.module.scss';
 import AppContext from '../../context/app-context';
@@ -47,16 +48,33 @@ const Hero = () => {
   };
 
   return (
-    <header className={styles.header}>
-      <div className={styles.sun}></div>
+    <motion.header
+      className={styles.header}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1 }}
+    >
+      <motion.div
+        className={styles.sun}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      ></motion.div>
 
-      <h1>
-        Welcome <span>to</span> Lofi Radio
-      </h1>
+      <motion.div
+        className={styles.main}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 1.5 }}
+      >
+        <h1>
+          Welcome <span>to</span> Lofi Radio
+        </h1>
 
-      <div className={styles.btn} onClick={onClickHandler}>
-        OPEN PLAYER
-      </div>
+        <div className={styles.btn} onClick={onClickHandler}>
+          OPEN PLAYER
+        </div>
+      </motion.div>
 
       <Person />
       <GrassOne />
@@ -67,8 +85,13 @@ const Hero = () => {
       <TreeTwo />
       <BirdsOne />
       <BirdsTwo />
-      <div className={styles.grass}></div>
-    </header>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.5 }}
+        className={styles.grass}
+      ></motion.div>
+    </motion.header>
   );
 };
 

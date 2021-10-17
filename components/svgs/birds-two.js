@@ -1,16 +1,20 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 import styles from './birds-two.module.scss';
 
 const BirdsTwo = () => {
   return (
-    <svg
+    <motion.svg
       className={styles['birds-two']}
       width='395'
       height='167'
       viewBox='0 0 395 167'
       fill='none'
       xmlns='http://www.w3.org/2000/svg'
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1, delay: 1 }}
     >
       <path
         d='M387.972 94.8145L394.346 89.7073C389.394 89.16 387.36 91.8654 386.527 94.0068C382.659 92.3976 378.448 94.5066 378.448 94.5066L391.2 99.1449C390.557 97.4233 389.437 95.9211 387.972 94.8145Z'
@@ -28,7 +32,7 @@ const BirdsTwo = () => {
         d='M9.52406 5.1788L15.8977 0.0715256C10.9463 -0.475776 8.91186 2.22968 8.07925 4.37108C4.21102 2.76182 0 4.87083 0 4.87083L12.7525 9.50914C12.1091 7.78755 10.9892 6.2854 9.52406 5.1788Z'
         fill='#3F3D56'
       />
-    </svg>
+    </motion.svg>
   );
 };
 
