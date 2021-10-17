@@ -4,3 +4,9 @@
   bottom: 7rem;
   z-index: 4;
 }
+
+@media (max-width: 728px) {
+  .grass-one {
+    display: none;
+  }
+}
