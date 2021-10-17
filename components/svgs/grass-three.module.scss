@@ -5,3 +5,9 @@
   z-index: 4;
   width: 1rem;
 }
+
+@media (max-width: 728px) {
+  .grass-three {
+    display: none;
+  }
+}
