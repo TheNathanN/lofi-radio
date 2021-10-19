@@ -116,6 +116,7 @@ const PlayerController = () => {
     <div className={styles['controller-container']}>
       {selectedSong && (
         <div className={styles['album-photo']}>
+          {/* album photo */}
           <Image
             src={_albumInfo.img}
             alt={_albumInfo.name}
@@ -123,10 +124,14 @@ const PlayerController = () => {
             height={500}
           />
 
+          {/* album credits display */}
+
           <div className={styles['song-credits']}>
             <p className={styles['song-name']}> {selectedSong} </p>
             <p className={styles['artists-name']}> {playlist[0].credits} </p>
           </div>
+
+          {/* the player display */}
 
           <div className={styles.player}>
             <audio
@@ -137,6 +142,8 @@ const PlayerController = () => {
             >
               <source src={playlist[0].audio} />
             </audio>
+
+            {/* progress bar display */}
 
             <div className={styles['progress-bar']}>
               {/* current time */}
@@ -170,6 +177,8 @@ const PlayerController = () => {
               </div>
             </div>
 
+            {/* controll buttons display */}
+
             <div className={styles['control-btns']}>
               <button onClick={prevSongHandler}>
                 <i className='fas fa-step-backward'></i>
@@ -188,7 +197,9 @@ const PlayerController = () => {
           </div>
         </div>
       )}
+
       {/* Shows if there is no selected song*/}
+
       {!selectedSong && (
         <p className={styles.empty}>
           Choose an album and song to start listening!

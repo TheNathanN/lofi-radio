@@ -30,6 +30,7 @@ const PlayerPlaylist = () => {
     } else {
       albumSongs = _searchedAlbumInfo.songs;
     }
+
     const songIndex = albumSongs.indexOf(song);
 
     if (!searchedAlbum) {
@@ -45,8 +46,10 @@ const PlayerPlaylist = () => {
     if (_searchedAlbumInfo) {
       setSelectedAlbum(_searchedAlbumInfo.name);
     }
+
     setSelectedSong(song.name);
     setPlaylist(createdPlaylist);
+
     if (audioRef.current) {
       audioRef.current.load();
     }
