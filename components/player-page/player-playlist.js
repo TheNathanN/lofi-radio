@@ -132,7 +132,11 @@ const PlayerPlaylist = () => {
         </div>
       )}
       {/* ------------ This shows if there isn't an album selected or searched -------------- */}
-      {!_albumInfo && <p className={styles['no-album']}>No album selected!</p>}
+      {!_albumInfo && (
+        <p className={styles['no-album']} style={{ height: '100vh' }}>
+          No album selected!
+        </p>
+      )}
     </>
   );
 };
