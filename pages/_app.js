@@ -11,6 +11,7 @@ function MyApp({ Component, pageProps }) {
     <>
       <Head>
         <link rel='icon' href='/favicon.png' />
+        <link rel='apple-touch-icon' href='/favicon.png' />
         <link
           rel='stylesheet'
           href='https://use.fontawesome.com/releases/v5.15.4/css/all.css'
