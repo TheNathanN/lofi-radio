@@ -59,6 +59,7 @@ const PlayerPlaylist = () => {
     songSelectHandler(song);
     setOpen(false);
     setMenuMode('main');
+    window.scrollTo(0, 0);
   };
 
   return (

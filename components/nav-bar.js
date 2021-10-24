@@ -52,8 +52,10 @@ const NavBar = () => {
                     onClick={() => {
                       if (menuMode === 'albums') {
                         setMenuMode('main');
+                        window.scrollTo(0, 0);
                       } else {
                         setMenuMode('albums');
+                        window.scrollTo(0, 0);
                       }
                     }}
                   ></i>

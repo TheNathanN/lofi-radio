@@ -27,6 +27,7 @@ const PlayerAlbums = () => {
                 !selectedAlbum && setSelectedAlbum(album.name);
                 selectedAlbum && setSearchedAlbum(album.name);
                 setMenuMode('songs');
+                window.scrollTo(0, 0);
               }
             }}
           >
