@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import { motion } from 'framer-motion';
 
 import Hero from '../components/home-page/hero';
 import Albums from '../components/home-page/albums';
