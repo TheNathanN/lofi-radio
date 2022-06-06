@@ -17,7 +17,7 @@ const Footer = () => {
         </div>
         <p className={styles.credit}>
           Designed & Coded by{' '}
-          <Link href='https://nathan-nicholson.dev'>
+          <Link href='https://nathannicholson.dev'>
             <a target='blank'>Nathan Nicholson</a>
           </Link>
         </p>
