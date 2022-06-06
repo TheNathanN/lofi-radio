@@ -177,7 +177,7 @@ const PlayerController = () => {
               </div>
             </div>
 
-            {/* controll buttons display */}
+            {/* control buttons display */}
 
             <div className={styles['control-btns']}>
               <button onClick={prevSongHandler}>

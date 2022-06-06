@@ -8,16 +8,16 @@ const HomePage = () => {
   return (
     <>
       <Head>
-        <title>Lofi Radio| Home</title>
+        <title>Lofi Radio | Home</title>
         <meta
           name='description'
           content='A relaxing radio app for all of your lofi needs.'
         />
       </Head>
-      <motion.div exit={{ opacity: 0 }}>
+      <div>
         <Hero />
         <Albums />
-      </motion.div>
+      </div>
     </>
   );
 };

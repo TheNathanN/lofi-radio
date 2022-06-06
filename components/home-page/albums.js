@@ -1,7 +1,8 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { motion } from 'framer-motion';
+import { motion, useAnimation } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 
 import { albums } from '../../data/music';
 import styles from './albums.module.scss';
@@ -12,16 +13,37 @@ const Albums = () => {
   const { setSelectedAlbum, setMenuMode, setOpen } = useContext(AppContext);
 
   const router = useRouter();
+  const headerAnimation = useAnimation();
+  const albumsAnimation = useAnimation();
+
+  const [ref, inView] = useInView({
+    threshold: 0.2,
+  });
+
+  useEffect(() => {
+    if (inView) {
+      headerAnimation.start({
+        opacity: 1,
+        transition: { duration: 1 },
+      });
+      albumsAnimation.start({
+        opacity: 1,
+        y: 0,
+        transition: { duration: 1 },
+      });
+    }
+  }, [headerAnimation, albumsAnimation, inView]);
 
   return (
-    <motion.main
-      className={styles.featured}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 1, delay: 1.3 }}
-    >
-      <h2>Albums</h2>
-      <div className={styles['ft-container']}>
+    <main className={styles.featured} ref={ref}>
+      <motion.h2 initial={{ opacity: 0 }} animate={headerAnimation}>
+        Albums
+      </motion.h2>
+      <motion.div
+        initial={{ opacity: 0, y: 120 }}
+        animate={albumsAnimation}
+        className={styles['ft-container']}
+      >
         {albums.map(album => (
           <div
             className={styles['album-icon']}
@@ -47,8 +69,8 @@ const Albums = () => {
             <p className={styles['artist']}>{album.artist}</p>
           </div>
         ))}
-      </div>
-    </motion.main>
+      </motion.div>
+    </main>
   );
 };
 

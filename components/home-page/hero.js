@@ -48,24 +48,19 @@ const Hero = () => {
   };
 
   return (
-    <motion.header
-      className={styles.header}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 1 }}
-    >
+    <motion.header className={styles.header}>
       <motion.div
         className={styles.sun}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
+        transition={{ duration: 0.8 }}
       ></motion.div>
 
       <motion.div
         className={styles.main}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 1.5 }}
+        transition={{ duration: 0.8, delay: 0.8 }}
       >
         <h1>
           Welcome <span>to</span> Lofi Radio
@@ -88,7 +83,7 @@ const Hero = () => {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1.5 }}
+        transition={{ duration: 0.8 }}
         className={styles.grass}
       ></motion.div>
     </motion.header>
