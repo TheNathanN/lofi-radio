@@ -32,6 +32,17 @@ const Albums = () => {
         transition: { duration: 1 },
       });
     }
+    if (!inView) {
+      headerAnimation.start({
+        opacity: 0,
+        transition: { duration: 1 },
+      });
+      albumsAnimation.start({
+        opacity: 0,
+        y: 120,
+        transition: { duration: 1 },
+      });
+    }
   }, [headerAnimation, albumsAnimation, inView]);
 
   return (
