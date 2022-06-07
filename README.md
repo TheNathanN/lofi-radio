@@ -11,8 +11,6 @@
 
 ### The challenge
 
-Users should be able to:
-
 - Create a visually appealing music player
 - Have a minimum of 10 albums available
 - Color theme of the player should change based on the albums colors
