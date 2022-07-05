@@ -8,6 +8,16 @@
   text-align: center;
 }
 
+.albums-container,
+.songs-container {
+  /* Hide scrollbar for IE, Edge and Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 .albums-container {
   width: 22%;
   background-color: black;
