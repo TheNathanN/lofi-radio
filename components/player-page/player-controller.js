@@ -1,8 +1,8 @@
-import React, { useContext, useEffect, useState } from 'react';
-import Image from 'next/image';
-import styles from './player-controller.module.scss';
-import AppContext from '../../context/app-context';
-import { getAlbumInfo } from '../../data/music';
+import React, { useContext, useEffect, useState } from "react"
+
+import styles from "./player-controller.module.scss"
+import AppContext from "../../context/app-context"
+import { getAlbumInfo } from "../../data/music"
 
 const PlayerController = () => {
   const {
@@ -14,121 +14,116 @@ const PlayerController = () => {
     selectedSong,
     playlist,
     setPlaylist,
-  } = useContext(AppContext);
+  } = useContext(AppContext)
 
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [duration, setDuration] = useState(0);
-  const [currentTime, setCurrentTime] = useState(0);
-  const [animationPercentage, setAnimationPercentage] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(false)
+  const [duration, setDuration] = useState(0)
+  const [currentTime, setCurrentTime] = useState(0)
+  const [animationPercentage, setAnimationPercentage] = useState(0)
 
-  const [_albumInfo] = getAlbumInfo(selectedAlbum);
+  const [_albumInfo] = getAlbumInfo(selectedAlbum)
 
   useEffect(() => {
     if (isPlaying) {
-      audioRef.current.play();
+      audioRef.current.play()
     } else if (!isPlaying && selectedSong) {
-      audioRef.current.pause();
+      audioRef.current.pause()
     } else {
-      return;
+      return
     }
-  }, [audioRef, isPlaying, selectedSong, progressRef]);
+  }, [audioRef, isPlaying, selectedSong, progressRef])
 
   // Track Bar Handlers
 
-  const timeUpdateHandler = e => {
-    const current = e.target.currentTime;
-    const duration = e.target.duration;
-    const roundedCurrent = Math.round(current);
-    const roundedDuration = Math.round(duration);
-    const animationPerc = Math.round((roundedCurrent / roundedDuration) * 100);
-    setDuration(duration);
-    setCurrentTime(current);
-    setAnimationPercentage(animationPerc);
-  };
+  const timeUpdateHandler = (e) => {
+    const current = e.target.currentTime
+    const duration = e.target.duration
+    const roundedCurrent = Math.round(current)
+    const roundedDuration = Math.round(duration)
+    const animationPerc = Math.round((roundedCurrent / roundedDuration) * 100)
+    setDuration(duration)
+    setCurrentTime(current)
+    setAnimationPercentage(animationPerc)
+  }
 
-  const formatTime = secs => {
-    const minutes = Math.floor(secs / 60);
-    const returnMinutes = minutes < 10 ? `0${minutes}` : `${minutes}`;
-    const seconds = Math.floor(secs % 60);
-    const returnSeconds = seconds < 10 ? `0${seconds}` : `${seconds}`;
-    return `${returnMinutes}:${returnSeconds}`;
-  };
+  const formatTime = (secs) => {
+    const minutes = Math.floor(secs / 60)
+    const returnMinutes = minutes < 10 ? `0${minutes}` : `${minutes}`
+    const seconds = Math.floor(secs % 60)
+    const returnSeconds = seconds < 10 ? `0${seconds}` : `${seconds}`
+    return `${returnMinutes}:${returnSeconds}`
+  }
 
-  const progressHandler = e => {
-    audioRef.current.currentTime = progressRef.current.value;
-  };
+  const progressHandler = (e) => {
+    audioRef.current.currentTime = progressRef.current.value
+  }
 
   // Control Handlers
 
   const playPauseHandler = () => {
-    const prevVal = isPlaying;
-    setIsPlaying(!prevVal);
+    const prevVal = isPlaying
+    setIsPlaying(!prevVal)
     if (!prevVal) {
-      audioRef.current.play();
+      audioRef.current.play()
     } else {
-      audioRef.current.pause();
+      audioRef.current.pause()
     }
-  };
+  }
 
   const nextSongHandler = () => {
-    const currentPlaylist = [...playlist];
-    currentPlaylist.shift();
+    const currentPlaylist = [...playlist]
+    currentPlaylist.shift()
     if (currentPlaylist.length >= 1) {
-      setPlaylist(currentPlaylist);
-      setSelectedSong(currentPlaylist[0].name);
-      audioRef.current.load();
+      setPlaylist(currentPlaylist)
+      setSelectedSong(currentPlaylist[0].name)
+      audioRef.current.load()
     } else {
-      setIsPlaying(false);
-      setSelectedSong('');
-      setSelectedAlbum('');
+      setIsPlaying(false)
+      setSelectedSong("")
+      setSelectedAlbum("")
     }
-  };
+  }
 
   const prevSongHandler = () => {
-    const currentPlaylist = [...playlist];
-    const albumSongs = _albumInfo.songs;
-    const currentSong = playlist[0];
-    const currentSongIndex = albumSongs.indexOf(currentSong);
-    const prevSongArr = albumSongs.filter(song => {
-      return albumSongs.indexOf(song) === currentSongIndex - 1;
-    });
-    const [prevSong] = prevSongArr;
+    const currentPlaylist = [...playlist]
+    const albumSongs = _albumInfo.songs
+    const currentSong = playlist[0]
+    const currentSongIndex = albumSongs.indexOf(currentSong)
+    const prevSongArr = albumSongs.filter((song) => {
+      return albumSongs.indexOf(song) === currentSongIndex - 1
+    })
+    const [prevSong] = prevSongArr
 
-    currentPlaylist.unshift(prevSong);
+    currentPlaylist.unshift(prevSong)
 
     if (prevSong) {
-      setPlaylist(currentPlaylist);
-      setSelectedSong(currentPlaylist[0].name);
-      audioRef.current.load();
+      setPlaylist(currentPlaylist)
+      setSelectedSong(currentPlaylist[0].name)
+      audioRef.current.load()
     } else {
-      setIsPlaying(false);
+      setIsPlaying(false)
     }
-  };
+  }
 
   //Add the Styles for Track
 
   const trackAnim = {
     transform: `translateX(${animationPercentage}%)`,
-    background: `${_albumInfo ? _albumInfo.color1 : 'black'}`,
-  };
+    background: `${_albumInfo ? _albumInfo.color1 : "black"}`,
+  }
 
   return (
-    <div className={styles['controller-container']}>
+    <div className={styles["controller-container"]}>
       {selectedSong && (
-        <div className={styles['album-photo']}>
+        <div className={styles["album-photo"]}>
           {/* album photo */}
-          <Image
-            src={_albumInfo.img}
-            alt={_albumInfo.name}
-            width={500}
-            height={500}
-          />
+          <img src={_albumInfo.img} alt={_albumInfo.name} />
 
           {/* album credits display */}
 
-          <div className={styles['song-credits']}>
-            <p className={styles['song-name']}> {selectedSong} </p>
-            <p className={styles['artists-name']}> {playlist[0].credits} </p>
+          <div className={styles["song-credits"]}>
+            <p className={styles["song-name"]}> {selectedSong} </p>
+            <p className={styles["artists-name"]}> {playlist[0].credits} </p>
           </div>
 
           {/* the player display */}
@@ -145,21 +140,21 @@ const PlayerController = () => {
 
             {/* progress bar display */}
 
-            <div className={styles['progress-bar']}>
+            <div className={styles["progress-bar"]}>
               {/* current time */}
               <div className={styles.time}>{formatTime(currentTime)}</div>
               {/* progress bar */}
               <div
-                className={styles['track']}
+                className={styles["track"]}
                 style={{
-                  background: `${_albumInfo ? _albumInfo.color2 : 'white'}`,
+                  background: `${_albumInfo ? _albumInfo.color2 : "white"}`,
                   border: `2px solid ${
-                    _albumInfo ? _albumInfo.color1 : 'white'
+                    _albumInfo ? _albumInfo.color1 : "white"
                   }`,
                 }}
               >
                 <input
-                  type='range'
+                  type="range"
                   min={0}
                   max={duration && !isNaN(duration) ? duration : 0}
                   ref={progressRef}
@@ -167,31 +162,31 @@ const PlayerController = () => {
                   onChange={progressHandler}
                 />
                 <div
-                  className={styles['animate-track']}
+                  className={styles["animate-track"]}
                   style={trackAnim}
                 ></div>
               </div>
               {/* duration */}
               <div className={styles.duration}>
-                {duration && !isNaN(duration) ? formatTime(duration) : '00:00'}
+                {duration && !isNaN(duration) ? formatTime(duration) : "00:00"}
               </div>
             </div>
 
             {/* control buttons display */}
 
-            <div className={styles['control-btns']}>
+            <div className={styles["control-btns"]}>
               <button onClick={prevSongHandler}>
-                <i className='fas fa-step-backward'></i>
+                <i className="fas fa-step-backward"></i>
               </button>
               <button onClick={playPauseHandler}>
                 {!isPlaying ? (
-                  <i className='fas fa-play'></i>
+                  <i className="fas fa-play"></i>
                 ) : (
-                  <i className='fas fa-pause'></i>
+                  <i className="fas fa-pause"></i>
                 )}
               </button>
               <button onClick={nextSongHandler}>
-                <i className='fas fa-step-forward'></i>
+                <i className="fas fa-step-forward"></i>
               </button>
             </div>
           </div>
@@ -201,12 +196,12 @@ const PlayerController = () => {
       {/* Shows if there is no selected song*/}
 
       {!selectedSong && (
-        <p className={styles.empty} style={{ height: '100vh' }}>
+        <p className={styles.empty} style={{ height: "100vh" }}>
           Choose an album and song to start listening!
         </p>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default PlayerController;
+export default PlayerController

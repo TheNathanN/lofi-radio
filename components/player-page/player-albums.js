@@ -1,45 +1,44 @@
-import React, { useContext } from 'react';
-import Image from 'next/image';
-import styles from './player-albums.module.scss';
+import React, { useContext } from "react"
+import styles from "./player-albums.module.scss"
 
-import { albums } from '../../data/music';
+import { albums } from "../../data/music"
 
-import AppContext from '../../context/app-context';
+import AppContext from "../../context/app-context"
 
 const PlayerAlbums = () => {
   const { setSelectedAlbum, setSearchedAlbum, selectedAlbum, setMenuMode } =
-    useContext(AppContext);
+    useContext(AppContext)
 
   return (
     <div className={styles.featured}>
       <h2>Albums</h2>
-      <div className={styles['ft-container']}>
-        {albums.map(album => (
+      <div className={styles["ft-container"]}>
+        {albums.map((album) => (
           <div
-            className={styles['album-icon']}
+            className={styles["album-icon"]}
             key={album.name}
-            onClick={e => {
+            onClick={(e) => {
               if (
                 e.target.alt ||
                 (e.target.outerText && e.target.outerText === album.name) ||
                 (e.target.outerText && e.target.outerText === album.artist)
               ) {
-                !selectedAlbum && setSelectedAlbum(album.name);
-                selectedAlbum && setSearchedAlbum(album.name);
-                setMenuMode('songs');
-                window.scrollTo(0, 0);
+                !selectedAlbum && setSelectedAlbum(album.name)
+                selectedAlbum && setSearchedAlbum(album.name)
+                setMenuMode("songs")
+                window.scrollTo(0, 0)
               }
             }}
           >
-            <Image src={album.img} alt={album.name} width={500} height={500} />
-            <p className={styles['album-name']}>{album.name}</p>
-            <p className={styles['artist']}>{album.artist}</p>
+            <img src={album.img} alt={album.name} />
+            <p className={styles["album-name"]}>{album.name}</p>
+            <p className={styles["artist"]}>{album.artist}</p>
             <p></p>
           </div>
         ))}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default PlayerAlbums;
+export default PlayerAlbums

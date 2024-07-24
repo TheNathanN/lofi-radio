@@ -87,6 +87,7 @@
   input {
     width: 100%;
     max-width: 463px;
+    appearance: none;
     -webkit-appearance: none;
     background: transparent;
     border-radius: 10px;
@@ -99,12 +100,14 @@
     }
 
     &::-webkit-slider-thumb {
+      appearance: none;
       -webkit-appearance: none;
       height: 0px;
       width: 0px;
     }
 
     &::-moz-range-thumb {
+      appearance: none;
       -webkit-appearance: none;
       height: 0px;
       width: 0px;
