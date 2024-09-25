@@ -9,7 +9,6 @@ export default function Record({ onClickHandler }) {
       viewBox="0 0 1032 1032"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      onClick={onClickHandler}
       className={styles.record}
       initial={{ rotate: 0 }}
       animate={{ rotate: 360 }}
@@ -18,10 +17,13 @@ export default function Record({ onClickHandler }) {
         ease: "linear",
         loop: Infinity,
         repeat: Infinity,
+        delay: 3,
       }}
     >
       <g clipPath="url(#clip0_310_23)">
         <path
+          onClick={onClickHandler}
+          style={{ cursor: "pointer" }}
           d="M515.555 1031.11C800.287 1031.11 1031.11 800.287 1031.11 515.555C1031.11 230.822 800.287 0.000396729 515.555 0.000396729C230.822 0.000396729 0.000488281 230.822 0.000488281 515.555C0.000488281 800.287 230.822 1031.11 515.555 1031.11Z"
           fill="url(#paint0_linear_310_23)"
         />
