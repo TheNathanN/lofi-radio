@@ -6,8 +6,11 @@
   width: 100%;
   position: relative;
   overflow: hidden;
-  height: 95vh;
-  max-height: 55rem;
+  height: 45rem;
+
+  @media (min-width: 768px) {
+    height: 55rem;
+  }
 }
 
 .main {

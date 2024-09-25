@@ -3,11 +3,7 @@
   box-shadow: -10 -19 -10 -19 #797979;
   bottom: -62%;
   animation: record-moveup 3s ease-out;
-  width: 200%;
-
-  @media (min-width: 768px) {
-    width: 150%;
-  }
+  width: 150%;
 }
 
 @keyframes record-moveup {
