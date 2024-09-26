@@ -42,9 +42,9 @@
   transition: ease-out 0.2s;
   width: 84%;
   color: #669bbe;
+  gap: 0.5rem;
   .song-name {
     font-size: 1.05rem;
-    margin-bottom: 1rem;
   }
   .song-credits {
     font-size: 0.95rem;
@@ -114,8 +114,20 @@
   .song-details {
     width: 15rem;
     margin: 1rem;
+    .song-name {
+      font-size: 1.05rem;
+    }
+    .song-credits {
+      font-size: 0.95rem;
+    }
     &:hover {
       width: 14.25rem;
+      .song-name {
+        font-size: 1.05rem;
+      }
+      .song-credits {
+        font-size: 0.95rem;
+      }
     }
   }
 
