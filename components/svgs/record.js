@@ -31,9 +31,9 @@ export default function Record({ onClickHandler }) {
           onHoverStart={() => setCursorVisible(true)}
           onHoverEnd={() => setCursorVisible(false)}
           style={{ cursor: "none" }}
+          onClick={onClickHandler}
         >
           <path
-            onClick={onClickHandler}
             d="M515.555 1031.11C800.287 1031.11 1031.11 800.287 1031.11 515.555C1031.11 230.822 800.287 0.000396729 515.555 0.000396729C230.822 0.000396729 0.000488281 230.822 0.000488281 515.555C0.000488281 800.287 230.822 1031.11 515.555 1031.11Z"
             fill="url(#paint0_linear_310_23)"
           />
